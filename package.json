@@ -1,0 +1,11 @@
+{
+  "name": "course-scheduling-backend",
+  "version": "0.1.0",
+  "main": "src/index.js",
+  "author": "Quang Tung Do",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
+
