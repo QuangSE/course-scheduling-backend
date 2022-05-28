@@ -4,3 +4,5 @@
 
 # misc
 .env
+route.rest
+.rest

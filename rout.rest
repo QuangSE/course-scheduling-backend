@@ -1,0 +1,37 @@
+
+###getAllDocents
+GET http://localhost:3001/api/docent/
+
+###getDocentbyID
+GET http://localhost:3001/api/docent/1
+
+###createNewDocent
+POST http://localhost:3001/api/docent/new
+Content-Type: application/json
+
+{
+"first_name": "test2",
+"last_name": "test",
+"email": "test.test1@hs-kl.de",
+"title": "Prof. Dr",
+"profession":"Professor"
+}
+
+###updateDocent
+PUT http://localhost:3001/api/docent/9/edit
+Content-Type: application/json
+
+{
+"first_name": "Pedra",
+"last_name": "Barclay",
+"email": "Pedra.Barclay@hs-kl",
+"title": "Prof. Dr",
+"profession":"Professor"
+}
+
+
+###deleteDocentByID
+DELETE http://localhost:3001/api/docent/113/delete
+
+###getDocentByLastName
+GET http://localhost:3001/api/docent/Doe
