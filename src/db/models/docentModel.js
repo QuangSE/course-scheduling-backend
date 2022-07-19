@@ -32,20 +32,20 @@ class Docent extends Model {
       required: ["first_name", "last_name"],
 
       properties: {
-        docent_id: { type: "number" },
-        first_name: { type: "string", minLength: 1, maxLength: 45 },
-        last_name: { type: "string", minLength: 1, maxLength: 45 },
-        email: { type: "string", maxLength: 150 },
-        title: { type: "string", minLength: 1, maxLength: 45 },
-        profession: { type: "string", minLength: 1, maxLength: 45 },
+        docent_id: { type: "integer" },
+        first_name: { type: "string", minLength: 1, maxLength: 200 },
+        last_name: { type: "string", maxLength: 200 },
+        email: { type: "string", maxLength: 200 },
+        title: { type: "string", maxLength: 100 },
+        profession: { type: "string", minLength: 1, maxLength: 100 },
       },
     };
   }
 
-  //TODO: Check if relationship mappings needs to be implemented redundantly
   static get relationMappings() {
     const Course = require("./courseModel");
-    const DocentCourse = require("./DocentCourseModel");
+    const DocentCourse = require("./docentCourseModel");
+    const User = require("./userModel");
 
     return {
       courses: {
@@ -55,12 +55,20 @@ class Docent extends Model {
           from: "docent.docent_id",
           through: {
             modelClass: DocentCourse,
-            from: "docent_course.personId",
-            to: "docent_course.movieId",
+            from: "docent_course.docent_id",
+            to: "docent_course.course_id",
           },
-          to: "courses.id",
+          to: "course.course_id",
         },
       },
+      user: {
+        relation: Model.HasOneRelation, //TODO: can a docent has more than one account?
+        modelClass: User,
+        join: {
+          from: "docent.docent_id",
+          to: "user.docent_id",
+        }
+      }
     };
   }
 }

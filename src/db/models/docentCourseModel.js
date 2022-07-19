@@ -18,21 +18,48 @@ class DocentCourse extends Model {
     return "course_id";
   }
 
+  static get registeredColumn() {
+    return "registered_id";
+  }
+
   static get jsonSchema() {
     return {
       type: "object",
       required: ["docent_id", "course_id"],
 
       properties: {
-        docent_course_id: { type: "number" },
-        docent_id: { type: "number", minLength: 1 },
-        course_id: { type: "number", minLength: 1 },
+        docent_course_id: { type: "integer" },
+        docent_id: { type: "integer", minLength: 1 },
+        course_id: { type: "integer", minLength: 1 },
+        registered: { type: "boolean"}
       },
     };
   }
 
-  //TODO: add relationshipMappings
-  static get relationshipMappings() {}
+
+  static get relationMappings() {
+    const Course = require("./courseModel");
+    const Docent = require("./docentModel");
+
+    return {
+      course: {
+        relation: Model.BelongsToOneRelation,
+        modelClass: Course,
+        join: {
+          from: "docent_course.course_id",
+          to: "course.course_id",
+        },
+      },
+      docent: {
+        relation: Model.BelongsToOneRelation,
+        modelClass: Docent,
+        join: {
+          from: "docent_course.docent_id",
+          to: "docent.docent_id", 
+        }
+      }
+    };
+  }
 }
 
 docent_course.exports = DocentCourse;

@@ -3,7 +3,7 @@ const { trim_all, trim_util } = require("request_trimmer");
 
 const loggerMiddleware = require("./middlewares/loggerMiddleware");
 const validateJson = require("./middlewares/validateJson");
-const router = require("./routes/router");
+const router = require("./router");
 const errorHandler = require("./middlewares/errorHandler");
 
 const app = express();

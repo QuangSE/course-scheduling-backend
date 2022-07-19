@@ -33,17 +33,18 @@ class User extends Model {
       required: ["username", "password", "permission_id", "docent_id"],
 
       properties: {
-        user_id: { type: "number" },
-        username: { type: "string", minLength: 1, maxLength: 100 },
-        password: { type: "string", minLength: 6, maxLength: 100 }, //TODO: hashing password + password requirements
-        permission_id: { type: "number", minLength: 1 },
-        docent_id: { type: "number", minLength: 1 },
+        user_id: { type: "integer" },
+        username: { type: "string", minLength: 1, maxLength: 200 },
+        password: { type: "string", minLength: 6, maxLength: 200 }, //TODO: hashing password + password requirements
+        permission_id: { type: "integer", minLength: 1 },
+        docent_id: { type: "integer", minLength: 1 },
       },
     };
   }
 
   static get relationMappings() {
     const Docent = require("./docentModel");
+    const Permission = require("./permissionModel");
 
     return {
       docent: {
@@ -54,7 +55,15 @@ class User extends Model {
           to: "docent.docent_id",
         },
       },
-    }
+      permission: {
+        relation: Model.BelongsToOneRelation,
+        modelClass: Permission,
+        join: {
+          from: "user.permission_id",
+          to: "permission.permission_id",
+        },
+      },
+    };
   }
 }
 
