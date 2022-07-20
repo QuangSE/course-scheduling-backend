@@ -48,4 +48,4 @@ class Permission extends Model {
   }
 }
 
-permission.exports = Permission;
+module.exports = Permission;

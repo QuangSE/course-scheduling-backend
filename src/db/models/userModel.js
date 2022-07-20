@@ -67,4 +67,4 @@ class User extends Model {
   }
 }
 
-user.exports = User;
+module.exports = User;
