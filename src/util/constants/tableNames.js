@@ -1,6 +1,6 @@
 module.exports = {
     comment: "comment",
-    compulsory_module: "course",
+    course: "course",
     docent: "docent",
     docent_course: "docent_course",
     exam_regulations: "exam_regulations",
