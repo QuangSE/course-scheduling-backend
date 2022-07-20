@@ -1,0 +1,24 @@
+const Permission = require("../db/models/permissionModel");
+
+exports.getAllPermissions = function () {
+  return Permission.query();
+};
+
+exports.getPermissionById = function (permissionId) {
+  return Permission.query().findById(permissionId);
+};
+
+exports.createNewPermission = function (permissionData) {
+  return Permission.query().insert(permissionData);
+};
+
+exports.updatePermission = async function (permissionId, permissionData) {
+  const result = await Permission.query()
+    .findById(permissionId)
+    .patch(permissionData); //TODO: why async?
+  return result;
+};
+
+exports.deletePermissionById = function (permissionId) {
+  return Permission.query().deleteById(permissionId);
+};

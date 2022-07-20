@@ -1,0 +1,32 @@
+
+###getAllmajors
+GET http://localhost:3001/api/major/
+
+###getmajorbyID
+GET http://localhost:3001/api/major/1
+
+###getDocent
+GET http://localhost:3001/api/major/1/docent
+
+
+
+###createNewmajor
+POST http://localhost:3001/api/major/
+Content-Type: application/json
+
+{
+
+}
+
+###updatemajor
+PATCH  http://localhost:3001/api/major/1/
+Content-Type: application/json
+
+{
+
+}
+
+
+###deletemajorByID
+DELETE http://localhost:3001/api/major/113/
+

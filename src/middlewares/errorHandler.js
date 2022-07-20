@@ -29,6 +29,12 @@ function errorHandler(err, res) {
         message: err.message,
       });
       break;
+    case errNames.ForeignKeyViolationError:
+      res.status(500).send({
+        name: err.name,
+        message: err.message,
+      });
+      break;
     default:
       res.status(500).send({
         name: err.name,

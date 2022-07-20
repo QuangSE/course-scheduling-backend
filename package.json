@@ -10,6 +10,7 @@
     "knex": "^2.0.0",
     "mysql2": "^2.3.3",
     "objection": "^3.0.1",
+    "objection-password": "^3.0.0",
     "request_trimmer": "^1.0.0",
     "winston": "^3.7.2"
   },

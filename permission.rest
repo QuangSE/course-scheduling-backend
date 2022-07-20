@@ -1,0 +1,32 @@
+
+###getAllpermissions
+GET http://localhost:3001/api/permission/
+
+###getpermissionbyID
+GET http://localhost:3001/api/permission/1
+
+###createNewpermission
+POST http://localhost:3001/api/permission/
+Content-Type: application/json
+
+{
+"name": "user",
+"description": "Restricted read and write permissions"
+}
+
+###updatepermission
+PUT http://localhost:3001/api/permission/1/
+Content-Type: application/json
+
+{
+"first_name": "Pedravic",
+"last_name": "Barclay",
+"email": "Pedra.Barclay@hs-kl",
+"title": "Prof. Dr",
+"profession":"Professor"
+}
+
+
+###deletepermissionByID
+DELETE http://localhost:3001/api/permission/113/
+

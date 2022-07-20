@@ -10,9 +10,9 @@ POST http://localhost:3001/api/docent/new
 Content-Type: application/json
 
 {
-"first_name": "test2",
+"first_name": "asdtest2",
 "last_name": "test",
-"email": "test.test1@hs-kl.de",
+"email": "tetee@hs-kl.de",
 "title": "Prof. Dr",
 "profession":"Professor"
 }
@@ -22,7 +22,7 @@ PUT http://localhost:3001/api/docent/9/edit
 Content-Type: application/json
 
 {
-"first_name": "Pedra",
+"first_name": "Pedravic",
 "last_name": "Barclay",
 "email": "Pedra.Barclay@hs-kl",
 "title": "Prof. Dr",
@@ -31,7 +31,7 @@ Content-Type: application/json
 
 
 ###deleteDocentByID
-DELETE http://localhost:3001/api/docent/113/delete
+DELETE http://localhost:3001/api/docent/120/delete
 
 ###getDocentByLastName
 GET http://localhost:3001/api/docent/Doe

@@ -67,7 +67,6 @@ exports.deleteDocentById = async function (req, res) {
     ut.checkIdParam(id); //throws an error if id is not a number
     if (!(await docentService.deleteDocentById(id)))
       throw new InvalidParamError(docent, id);
-    logger.debug(await docentService.deleteDocentById(id));
     logger.info(msg.deleted(docent, id));
     res.sendStatus(200);
   } catch (err) {

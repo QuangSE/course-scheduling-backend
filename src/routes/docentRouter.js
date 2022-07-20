@@ -7,13 +7,14 @@ const docentController = require("../controllers/docentController");
 
 const router = express.Router();
 
-//TODO: check id params through middleware (express doc)
+//TODO: check id params through regex in routes
 
 router.get("/", docentController.getAllDocents);
 router.get("/:id", docentController.getDocentById);
+//TODO: get total lsws, registered courses
 router.post("/new", docentController.createNewDocent);
-router.put("/:id/edit", docentController.updateDocent); //FIXME: should be PATCH instead of PUT?
-router.delete("/:id/delete", docentController.deleteDocentById);
+router.put("/:id/edit", docentController.updateDocent); //FIXME: should be PATCH instead of PUT? 
+router.delete("/:id/delete", docentController.deleteDocentById); //TODO: remove edit and delete in route? (seems unnecessary)
 
 router.get("/:name", docentController.getDocentByLastName)
 

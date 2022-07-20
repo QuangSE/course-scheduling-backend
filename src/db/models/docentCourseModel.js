@@ -31,7 +31,7 @@ class DocentCourse extends Model {
         docent_course_id: { type: "integer" },
         docent_id: { type: "integer", minLength: 1 },
         course_id: { type: "integer", minLength: 1 },
-        registered: { type: "boolean"}
+        registered: { type: "integer"}
       },
     };
   }
@@ -62,4 +62,4 @@ class DocentCourse extends Model {
   }
 }
 
-docent_course.exports = DocentCourse;
+module.exports = DocentCourse;

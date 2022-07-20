@@ -1,8 +1,8 @@
 const Docent = require("../db/models/docentModel");
 const db = require("../db/dbSetup");
 
-exports.getAllDocents = function () {
-  return Docent.query();
+exports.getAllDocents = function (model) {
+  return model.query();
 };
 
 exports.getDocentById = function (id) {

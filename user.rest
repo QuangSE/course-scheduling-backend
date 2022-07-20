@@ -1,0 +1,35 @@
+
+###getAllusers
+GET http://localhost:3001/api/user/
+
+###getuserbyID
+GET http://localhost:3001/api/user/1
+
+###getDocent
+GET http://localhost:3001/api/user/1/docent
+
+
+
+###createNewuser
+POST http://localhost:3001/api/user/
+Content-Type: application/json
+
+{
+"username": "testUser",
+"password": "BA_2022",
+"permission_id": 1,
+"docent_id": 3
+}
+
+###updateuser
+PATCH  http://localhost:3001/api/user/1/
+Content-Type: application/json
+
+{
+"docent_id": 2
+}
+
+
+###deleteuserByID
+DELETE http://localhost:3001/api/user/113/
+

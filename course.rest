@@ -1,0 +1,31 @@
+
+###getAllcourses
+GET http://localhost:3001/api/course/
+
+###getcoursebyID
+GET http://localhost:3001/api/course/1
+
+###getDocent
+GET http://localhost:3001/api/course/1/docent
+
+###createNewcourse
+POST http://localhost:3001/api/course/
+Content-Type: application/json
+
+{
+"name": "testcourse",
+"lsws": "2",
+"module_id": 1
+}
+
+###updatecourse
+PATCH  http://localhost:3001/api/course/1/
+Content-Type: application/json
+
+{
+"module_id": 2
+}
+
+###deletecourseByID
+DELETE http://localhost:3001/api/course/113/
+
