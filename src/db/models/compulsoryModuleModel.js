@@ -31,7 +31,7 @@ class CompulsoryModule extends Model {
     };
   }
 
-  //TODO: add relationshipMappings
+
   static get relationMappings() {
     const Major = require("./majorModel");
     const Module = require("./moduleModel");

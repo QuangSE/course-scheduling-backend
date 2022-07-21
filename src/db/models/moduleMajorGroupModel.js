@@ -31,7 +31,6 @@ class ModuleMajorGroup extends Model {
     };
   }
 
-  //TODO: add relationshipMappings
   static get relationMappings() {
     const MajorGroup = require("./majorGroupModel");
     const Module = require("./moduleModel");
