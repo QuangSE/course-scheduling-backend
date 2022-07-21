@@ -14,7 +14,7 @@ Content-Type: application/json
 "last_name": "test",
 "email": "tetee@hs-kl.de",
 "title": "Prof. Dr",
-"profession":"Professor"
+"job_type":"Professor"
 }
 
 ###updateDocent
@@ -26,7 +26,7 @@ Content-Type: application/json
 "last_name": "Barclay",
 "email": "Pedra.Barclay@hs-kl",
 "title": "Prof. Dr",
-"profession":"Professor"
+"job_type":"Professor"
 }
 
 

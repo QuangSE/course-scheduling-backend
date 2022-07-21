@@ -22,8 +22,8 @@ class Docent extends Model {
     return "title";
   }
 
-  static get professionColumn() {
-    return "profession";
+  static get jobTypeColumn() {
+    return "job_type";
   }
 
   static get jsonSchema() {
@@ -37,7 +37,7 @@ class Docent extends Model {
         last_name: { type: "string", maxLength: 200 },
         email: { type: "string", maxLength: 200 },
         title: { type: "string", maxLength: 100 },
-        profession: { type: "string", minLength: 1, maxLength: 100 },
+        job_type: { type: "string", minLength: 1, maxLength: 100 },
       },
     };
   }
