@@ -1,5 +1,5 @@
 const dotenv = require("dotenv").config();
-const http = require("http");
+const http = require("http"); //TODO: setup https server
 
 const app = require("./app");
 const logger = require("./util/logger");
