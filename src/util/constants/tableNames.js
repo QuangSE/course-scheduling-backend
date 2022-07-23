@@ -3,7 +3,7 @@ module.exports = {
     COURSE: "course",
     DOCENT: "docent",
     DOCENT_COURSE: "docent_course",
-    EXAM_REGULATIONSs: "exam_regulations",
+    EXAM_REGULATIONS: "exam_regulations",
     MAJOR: "major",
     ER_GROUP: "er_group",
     MODUL: "module",
