@@ -5,7 +5,7 @@ const tableName = require("../../util/constants/tableNames");
 
 class User extends Password(Model) {
   static get tableName() {
-    return tableName.user;
+    return tableName.USER;
   }
 
   static get idColumn() {

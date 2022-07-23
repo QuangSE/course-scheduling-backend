@@ -3,7 +3,7 @@ const tableName = require("../../util/constants/tableNames");
 
 class DocentCourse extends Model {
   static get tableName() {
-    return tableName.docent_course;
+    return tableName.DOCENT_COURSE;
   }
 
   static get idColumn() {

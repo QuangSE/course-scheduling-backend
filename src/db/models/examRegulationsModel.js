@@ -3,7 +3,7 @@ const tableName = require("../../util/constants/tableNames");
 
 class ExamRegulations extends Model {
   static get tableName() {
-    return tableName.examRegulations;
+    return tableName.EXAM_REGULATIONS;
   }
 
   static get idColumn() {

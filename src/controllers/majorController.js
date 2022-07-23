@@ -3,7 +3,7 @@ const logger = require("../util/logger");
 const errorHandler = require("../middlewares/errorHandler");
 const ut = require("../util/utilFunctions");
 const InvalidParamError = require("../util/customErrors").InvalidParameterError;
-const msg= require("../util/constants/logMessages")
+const msg= require("../util/logMessages")
 const major = require("../util/constants/tableNames").major
 
 exports.getAllMajors = async function (req, res) {

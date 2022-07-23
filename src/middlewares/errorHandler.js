@@ -5,49 +5,49 @@ const errNames = require("../util/constants/errorNames");
 function errorHandler(err, res) {
   logger.error(err.stack);
   switch (err.name) {
-    case errNames.ValidationError:
+    case errNames.VALIDATION_ERROR:
       res.status(400).send({
         error: err.name,
         message: err.message,
       });
       break;
-    case errNames.UniqueViolationError:
+    case errNames.UNIQUE_VIOLATION_ERROR:
       res.status(409).send({
         error: err.name,
         message: err.nativeError.sqlMessage,
       });
       break;
-    case errNames.InvalidParameterError:
+    case errNames.INVALID_PARAMETER_ERROR:
       res.status(400).send({
         error: err.name,
         message: err.message,
       });
       break;
-    case errNames.InvalidReqBodyError:
+    case errNames.INVALID_REQ_BODY_ERROR:
       res.status(400).send({
         error: err.name,
         message: err.message,
       });
       break;
-    case errNames.ForeignKeyViolationError:
+    case errNames.FOREIGN_KEY_VIOLATION_ERROR:
       res.status(500).send({
         error: err.name,
         message: err.message,
       });
       break;
-    case errNames.InvalidUsernameError:
+    case errNames.INVALID_USERNAME_ERROR:
       res.status(401).send({
         error: err.name,
         message: err.message,
       });
       break;
-    case errNames.WrongPasswordError:
+    case errNames.INVALID_PASSWORD_ERROR:
       res.status(401).send({
         error: err.name,
         message: err.message,
       });
       break;
-      case errNames.InvalidTokenError:
+      case errNames.INVALID_TOKEN_ERROR:
       res.status(err.status).send({
         error: err.name,
         message: err.message,

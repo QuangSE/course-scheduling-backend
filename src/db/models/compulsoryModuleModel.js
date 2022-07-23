@@ -3,7 +3,7 @@ const tableName = require("../../util/constants/tableNames");
 
 class CompulsoryModule extends Model {
   static get tableName() {
-    return tableName.compulsory_module;
+    return tableName.COMPULSORY_MODULE;
   }
 
   static get idColumn() {

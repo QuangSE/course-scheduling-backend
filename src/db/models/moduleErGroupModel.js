@@ -3,7 +3,7 @@ const tableName = require("../../util/constants/tableNames");
 
 class ModuleErGroup extends Model {
   static get tableName() {
-    return tableName.module_er_group;
+    return tableName.MODULE_ER_GROUP;
   }
 
   static get idColumn() {

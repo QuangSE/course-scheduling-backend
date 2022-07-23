@@ -3,7 +3,7 @@ const logger = require("../util/logger");
 const errorHandler = require("../middlewares/errorHandler");
 const ut = require("../util/utilFunctions");
 const InvalidParamError = require("../util/customErrors").InvalidParameterError;
-const msg = require("../util/constants/logMessages");
+const msg = require("../util/logMessages");
 const user = require("../util/constants/tableNames").user;
 
 exports.getAllUsers = async function (req, res) {

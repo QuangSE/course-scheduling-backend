@@ -3,7 +3,7 @@ const tableName = require("../../util/constants/tableNames");
 
 class Permission extends Model {
   static get tableName() {
-    return tableName.permission;
+    return tableName.PERMISSION;
   }
 
   static get idColumn() {

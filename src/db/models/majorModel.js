@@ -3,7 +3,7 @@ const tableName = require("../../util/constants/tableNames");
 
 class Major extends Model {
   static get tableName() {
-    return tableName.major;
+    return tableName.MAJOR;
   }
 
   static get idColumn() {
@@ -33,7 +33,7 @@ class Major extends Model {
 
   
   static get relationMappings() {
-    const MajorGroup = require("./majorGroupModel");
+    const MajorGroup = require("./erGroupModel");
     const CompulsoryModule = require("./compulsoryModuleModel");
     const Module = require("./ModuleModel");
     const ExamRegulations = require("./examRegulationsModel")

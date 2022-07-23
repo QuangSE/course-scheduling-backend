@@ -3,7 +3,7 @@ const logger = require("../util/logger");
 const errorHandler = require("../middlewares/errorHandler");
 const ut = require("../util/utilFunctions");
 const InvalidParamError = require("../util/customErrors").InvalidParameterError;
-const msg= require("../util/constants/logMessages")
+const msg= require("../util/logMessages")
 const permission = require("../util/constants/tableNames").permission
 
 exports.getAllPermissions = async function (req, res) {
