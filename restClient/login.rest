@@ -1,0 +1,15 @@
+POST http://localhost:3001/api/auth/login
+Content-Type: application/json
+
+{
+"username": "testUser",
+"password": "BA_2022"
+}
+
+###
+POST http://localhost:3001/api/auth/logout
+Content-Type: application/json
+
+{
+"logout": "true"
+}

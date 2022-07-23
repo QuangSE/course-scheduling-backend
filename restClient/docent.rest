@@ -1,6 +1,7 @@
 
 ###getAllDocents
 GET http://localhost:3001/api/docent/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6InRlc3RVc2VyIiwicGVybWlzc2lvbiI6MiwiaWF0IjoxNjU4NTA0MDk0fQ.dj__Bf5F48Fi6HnrCFOMFWnLK-yz6jlIhPopf2mVDqs
 
 ###getDocentbyID
 GET http://localhost:3001/api/docent/1
