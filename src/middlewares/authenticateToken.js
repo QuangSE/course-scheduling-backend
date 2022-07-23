@@ -25,15 +25,6 @@ function authenticateToken(req, res, next) {
     }
 }
 
-const authUser = (req, res, next) => {
-    if (req.user == null) {
-        res.status(403);
-        return res.send("You need to sign in");
-    }
-
-    next();
-};
-
 function auth(permissions) {
     return (req, res, next) => {
       const session = req.session
