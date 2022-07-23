@@ -5,7 +5,7 @@ module.exports = {
     docentCourse: "docent_course",
     examRegulations: "exam_regulations",
     major: "major",
-    majorGroup: "major_group",
+    erGroup: "er_group",
     module: "module",
     moduleMajorGroup: "module_major_group",
     notice: "notice",

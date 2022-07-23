@@ -15,11 +15,14 @@ POST http://localhost:3001/api/major/
 Content-Type: application/json
 
 {
-
+"name":"Wirtschaftsingenieurwesen - Logistik & Produktionsmanagement",
+"degree":"Master"
 }
 
+
+
 ###updatemajor
-PATCH  http://localhost:3001/api/major/1/
+PATCH  http://localhost:3001/api/major/6/
 Content-Type: application/json
 
 {
@@ -28,5 +31,17 @@ Content-Type: application/json
 
 
 ###deletemajorByID
-DELETE http://localhost:3001/api/major/113/
+DELETE http://localhost:3001/api/major/23/
 
+
+
+###create PO
+POST http://localhost:3001/api//examRegulations/
+Content-Type: application/json
+
+{
+"degree":"Bachelor",
+"year":"2013",
+"exam_regulations_group":"",
+"name":"1"
+}

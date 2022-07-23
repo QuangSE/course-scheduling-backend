@@ -44,8 +44,8 @@ class Module extends Model {
   static get relationMappings() {
     const Course = require("./courseModel");
     const CompusolryModule = require("./compusolryModuleModel");
-    const ModuleMajorGroup = require("./moduleMajorGroupModel");
-    const MajorGroup = require("./majorGroupModel");
+    const ModuleErGroup = require("./moduleErGroupModel");
+    const ErGroup = require("./erGroupModel");
     const Major = require("./majorModel");
 
     return {
@@ -58,12 +58,12 @@ class Module extends Model {
         },
       },
 
-      moduleMajorGroups: {
+      moduleErGroups: {
         relation: Model.HasManyRelation,
-        modelClass: ModuleMajorGroup,
+        modelClass: ModuleErGroup,
         join: {
           from: "module.module_id",
-          to: "module_major_group.module_id",
+          to: "module_er_group.module_id",
         },
       },
 
@@ -76,17 +76,17 @@ class Module extends Model {
         },
       },
 
-      majorGroups: {
+      ErGroups: {
         relation: Model.ManyToManyRelation,
-        modelClass: MajorGroup,
+        modelClass: ErGroup,
         join: {
           from: "module.module_id",
           through: {
-            ModelClass: ModuleMajorGroup,
-            from: "module_major_group.module_id",
-            to: "module_major_group.major_group_id",
+            ModelClass: ModuleErGroup,
+            from: "module_er_group.module_id",
+            to: "module_er_group.er_group_id",
           },
-          to: "major_group.major_group_id",
+          to: "er_group.er_group_id",
         },
       },
 

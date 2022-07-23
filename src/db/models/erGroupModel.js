@@ -1,73 +1,73 @@
 const Model = require("objection").Model;
 const tableName = require("../../util/constants/tableNames");
 
-class MajorGroup extends Model {
+class ErGroup extends Model {
   static get tableName() {
-    return tableName.major_group;
+    return tableName.erGroup;
   }
 
   static get idColumn() {
-    return "major_group_id";
+    return "er_Group_id";
   }
 
   static get nameColumn() {
     return "name";
   }
 
-  static get majorIdColumn() {
-    return "major_id";
+  static get examRegulationsIdColumn() {
+    return "exam_rugulations_id";
   }
 
   static get jsonSchema() {
     return {
       type: "object",
-      required: ["name", "major_id"],
+      required: ["name", "exam_rugulations_id"],
 
       properties: {
         name: { type: "string", maxLength: 200 },
-        major_id: { type: "integer", minLength: 1 },
+        exam_rugulations_id: { type: "integer", minLength: 1 },
       },
     };
   }
 
   static get relationMappings() {
     const Module = require("./moduleModel");
-    const ModuleMajorGroup = require("./moduleMajorGroupModel");
+    const ModuleErGroup = require("./moduleErGroupModel");
     const Major = require("./majorModel")
     return {
       modules: {
         relation: Model.ManyToManyRelation,
         modelClass: Module,
         join: {
-          from: "major_group.major_group.id",
+          from: "er_Group.er_Group.id",
           through: {
-            modelClass: ModuleMajorGroup,
-            from: "module_major_group.major_group.id",
-            to: "module_major_group.module_id",
+            modelClass: ModuleErGroup,
+            from: "module_er_Group.er_Group.id",
+            to: "module_er_Group.module_id",
           },
           to: "module.module_id",
         },
       },
 
-      moduleMajorGroups: {
+      moduleErGroups: {
         relation: Model.HasManyRelation,
-        modelClass: ModuleMajorGroup,
+        modelClass: ModuleErGroup,
         join: {
-          from: "major_group.major_group_id",
-          to: "module_major_group.major_group_id",
+          from: "er_Group.er_Group_id",
+          to: "module_er_Group.er_Group_id",
         },
       },
 
-      major: {
+   /*    major: {
         relation: Model.BelongsToOneRelation,
         modelClass: Major,
         join: {
-          from: "major_group.major_id",
-          to: "major.major_id",
+          from: "er_Group.exam_rugulations_id",
+          to: "major.exam_rugulations_id",
         },
-      },
+      }, */
     };
   }
 }
 
-module.exports = MajorGroup;
+module.exports = ErGroup;
