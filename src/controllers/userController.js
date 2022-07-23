@@ -3,8 +3,8 @@ const logger = require("../util/logger");
 const errorHandler = require("../middlewares/errorHandler");
 const ut = require("../util/utilFunctions");
 const InvalidParamError = require("../util/customErrors").InvalidParameterError;
-const msg= require("../util/constants/logMessages")
-const user = require("../util/constants/tableNames").user
+const msg = require("../util/constants/logMessages");
+const user = require("../util/constants/tableNames").user;
 
 exports.getAllUsers = async function (req, res) {
   try {
@@ -30,6 +30,19 @@ exports.getUserById = async function (req, res) {
   }
 };
 
+exports.getUserByUsername = async function (req, res) {
+  try {
+    const username = req.params.username;
+    const result = await userService.getUserByUsername(username);
+    if (result) {
+      logger.info(msg.fetched(user, username));
+    }
+    return res.send(result);
+  } catch (err) {
+    errorHandler(err, res);
+  }
+};
+
 exports.getDocentOfUser = async function (req, res) {
   try {
     const id = req.params.id;
@@ -47,7 +60,7 @@ exports.getDocentOfUser = async function (req, res) {
 
 exports.createNewUser = async function (req, res, next) {
   try {
-    await userService.createNewUser(req.body)
+    await userService.createNewUser(req.body);
     res.status(201).send("OK");
     logger.info(msg.created(user));
   } catch (err) {

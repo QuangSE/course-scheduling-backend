@@ -1,7 +1,7 @@
 const compulsoryModuleService = require("../services/compulsoryModuleService");
 const logger = require("../util/logger");
 const errorHandler = require("../middlewares/errorHandler");
-const ut = require("../util/utilFunctions");
+const ut = require("../util/utilFunctions"); //TODO: import the required function instead
 const InvalidParamError = require("../util/customErrors").InvalidParameterError;
 const msg= require("../util/constants/logMessages")
 const compulsoryModule = require("../util/constants/tableNames").compulsoryModule

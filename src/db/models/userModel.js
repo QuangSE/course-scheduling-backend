@@ -36,7 +36,7 @@ class User extends Password(Model) {
       properties: {
         user_id: { type: "integer" },
         username: { type: "string", minLength: 1, maxLength: 200 },
-        password: { type: "string", minLength: 6, maxLength: 200 }, //TODO: hashing password + password requirements
+        password: { type: "string", minLength: 6, maxLength: 200 }, 
         permission_id: { type: "integer", minLength: 1 },
         docent_id: { type: "integer", minLength: 1 },
       },

@@ -1,0 +1,45 @@
+
+###getAllusers
+GET http://localhost:3001/api/user/
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6InRlc3RVc2VyIiwicGVybWlzc2lvbiI6MiwiaWF0IjoxNjU4NTA0MDk0fQ.dj__Bf5F48Fi6HnrCFOMFWnLK-yz6jlIhPopf2mVDqs
+
+
+
+###getuserbyID
+GET http://localhost:3001/api/user/1
+
+###getuserbyUsername
+GET http://localhost:3001/api/user/username/testUser
+
+
+###getDocent
+GET http://localhost:3001/api/user/1/docent
+
+
+
+###createNewuser
+POST http://localhost:3001/api/user/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6InRlc3RVc2VyIiwicGVybWlzc2lvbiI6MSwiaWF0IjoxNjU4NTAxMjkzfQ.6pXU3JYlItktRRsX-_pljncjF5QFbWlCByUe79jhd9E
+
+{
+"username": "testAdmin",
+"password": "BA_2022",
+"permission_id": 1,
+"docent_id": 1
+}
+
+###updateuser
+PATCH  http://localhost:3001/api/user/1/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6InRlc3RVc2VyIiwicGVybWlzc2lvbiI6MSwiaWF0IjoxNjU4NTAxMjkzfQ.6pXU3JYlItktRRsX-_pljncjF5QFbWlCByUe79jhd9E
+
+
+{
+"permission_id": 2
+}
+
+
+###deleteuserByID
+DELETE http://localhost:3001/api/user/113/
+

@@ -8,11 +8,16 @@ exports.getUserById = function (userId) {
   return User.query().findById(userId);
 };
 
+exports.getUserByUsername = async function (username) {
+  const user = await User.query().first().where("username", username);
+  return user;
+};
+
 exports.getDocentOfUser = async function (userId) {
   const docent = await User.query()
     .select("docent.*")
     .innerJoin("docent", "user.docent_id", "docent.docent_id")
-    .where("userId", userId)
+    .where("userId", userId);
   return docent;
 };
 

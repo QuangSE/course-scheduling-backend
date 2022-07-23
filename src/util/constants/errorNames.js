@@ -4,4 +4,7 @@ module.exports = {
   ValidationError: "ValidationError",
   UniqueViolationError: "UniqueViolationError",
   ForeignKeyViolationError: "ForeignKeyViolationError",
+  InvalidUsernameError: "InvalidUsernameError",
+  WrongPasswordError: "WrongPasswordError",
+  InvalidTokenError: "InvalidTokenError",
 };
