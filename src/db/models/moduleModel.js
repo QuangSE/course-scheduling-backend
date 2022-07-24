@@ -43,7 +43,7 @@ class Module extends Model {
 
   static get relationMappings() {
     const Course = require("./courseModel");
-    const CompusolryModule = require("./compusolryModuleModel");
+    const CompusolryModule = require("./compulsoryModuleModel");
     const ModuleErGroup = require("./moduleErGroupModel");
     const ErGroup = require("./erGroupModel");
     const Major = require("./majorModel");
