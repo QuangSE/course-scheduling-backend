@@ -29,7 +29,7 @@ class Docent extends Model {
   static get jsonSchema() {
     return {
       type: "object",
-      required: ["first_name", "last_name"],
+      required: ["last_name"],
 
       properties: {
         docent_id: { type: "integer" },
