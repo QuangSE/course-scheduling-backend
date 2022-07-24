@@ -4,12 +4,12 @@ const errorHandler = require("../middlewares/errorHandler");
 const ut = require("../util/utilFunctions");
 const InvalidParamError = require("../util/customErrors").InvalidParameterError;
 const msg = require("../util/logMessages");
-const user = require("../util/constants/tableNames").user;
+const USER = require("../util/constants/tableNames").USER;
 
 exports.getAllUsers = async function (req, res) {
   try {
     res.send(await userService.getAllUsers());
-    logger.info(msg.fetchedAll(user));
+    logger.info(msg.fetchedAll(USER));
   } catch (err) {
     errorHandler(err, res);
   }
@@ -21,10 +21,10 @@ exports.getUserById = async function (req, res) {
     ut.checkIdParam(id); //throws an error if id is not a number
     const result = await userService.getUserById(id);
     if (result) {
-      logger.info(msg.fetched(user, id));
+      logger.info(msg.fetched(USER, id));
       return res.send(result);
     }
-    throw new InvalidParamError(user, id);
+    throw new InvalidParamError(USER, id);
   } catch (err) {
     errorHandler(err, res);
   }
@@ -33,9 +33,9 @@ exports.getUserById = async function (req, res) {
 exports.getUserByUsername = async function (req, res) {
   try {
     const username = req.params.username;
-    const result = await userService.getUserByUsername(username);
+    const result = await userService.getUserByUsername(USERname);
     if (result) {
-      logger.info(msg.fetched(user, username));
+      logger.info(msg.fetched(USER, username));
     }
     return res.send(result);
   } catch (err) {
@@ -49,10 +49,10 @@ exports.getDocentOfUser = async function (req, res) {
     ut.checkIdParam(id); //throws an error if id is not a number
     const result = await userService.getDocentOfUser(id);
     if (result) {
-      logger.info(msg.fetched(user, id));
+      logger.info(msg.fetched(USER, id));
       return res.send(result);
     }
-    throw new InvalidParamError(user, id);
+    throw new InvalidParamError(USER, id);
   } catch (err) {
     errorHandler(err, res);
   }
@@ -62,7 +62,7 @@ exports.createNewUser = async function (req, res, next) {
   try {
     await userService.createNewUser(req.body);
     res.status(201).send("OK");
-    logger.info(msg.created(user));
+    logger.info(msg.created(USER));
   } catch (err) {
     errorHandler(err, res);
   }
@@ -73,8 +73,8 @@ exports.updateUser = async function (req, res) {
     const id = req.params.id;
     ut.checkIdParam(id); //throws an error if id is not a number
     if (!(await userService.updateUser(id, req.body)))
-      throw new InvalidParamError(user, id);
-    logger.info(msg.updated(user, id));
+      throw new InvalidParamError(USER, id);
+    logger.info(msg.updated(USER, id));
     res.sendStatus(200);
   } catch (err) {
     errorHandler(err, res);
@@ -86,8 +86,8 @@ exports.deleteUserById = async function (req, res) {
     const id = req.params.id;
     ut.checkIdParam(id); //throws an error if id is not a number
     if (!(await userService.deleteUserById(id)))
-      throw new InvalidParamError(user, id);
-    logger.info(msg.deleted(user, id));
+      throw new InvalidParamError(USER, id);
+    logger.info(msg.deleted(USER, id));
     res.sendStatus(200);
   } catch (err) {
     errorHandler(err, res);

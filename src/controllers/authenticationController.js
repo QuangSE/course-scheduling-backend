@@ -45,8 +45,10 @@ exports.verifyLogin = async function (req, res) {
 exports.getLoginStatus = async function (req, res) {
   try {
     if (req.session.user) {
+      logger.debug("session exist for user: " + req.session.user.username)
       res.send({ session: true, user: req.session.user });
     } else {
+      logger.debug("session not exist");
       res.send({ session: false});
     }
 

@@ -4,12 +4,12 @@ const errorHandler = require("../middlewares/errorHandler");
 const ut = require("../util/utilFunctions");
 const InvalidParamError = require("../util/customErrors").InvalidParameterError;
 const msg= require("../util/logMessages")
-const moduleErGroup = require("../util/constants/tableNames").moduleErGroup
+const MODULE_ER_GROUP = require("../util/constants/tableNames").MODULE_ER_GROUP
 
 exports.getAllModuleErGroups = async function (req, res) {
   try {
     res.send(await moduleErGroupService.getAllModuleErGroups());
-    logger.info(msg.fetchedAll(moduleErGroup));
+    logger.info(msg.fetchedAll(MODULE_ER_GROUP));
   } catch (err) {
     errorHandler(err, res);
   }
@@ -21,10 +21,10 @@ exports.getModuleErGroupById = async function (req, res) {
     ut.checkIdParam(id); //throws an error if id is not a number
     const result = await moduleErGroupService.getModuleErGroupById(id);
     if (result) {
-      logger.info(msg.fetched(moduleErGroup, id));
+      logger.info(msg.fetched(MODULE_ER_GROUP, id));
       return res.send(result);
     }
-    throw new InvalidParamError(moduleErGroup, id);
+    throw new InvalidParamError(MODULE_ER_GROUP, id);
   } catch (err) {
     errorHandler(err, res);
   }
@@ -34,7 +34,7 @@ exports.createNewModuleErGroup = async function (req, res, next) {
   try {
     await moduleErGroupService.createNewModuleErGroup(req.body)
     res.status(201).send("OK");
-    logger.info(msg.created(moduleErGroup));
+    logger.info(msg.created(MODULE_ER_GROUP));
   } catch (err) {
     errorHandler(err, res);
   }
@@ -45,8 +45,8 @@ exports.updateModuleErGroup = async function (req, res) {
     const id = req.params.id;
     ut.checkIdParam(id); //throws an error if id is not a number
     if (!(await moduleErGroupService.updateModuleErGroup(id, req.body)))
-      throw new InvalidParamError(moduleErGroup, id);
-    logger.info(msg.updated(moduleErGroup, id));
+      throw new InvalidParamError(MODULE_ER_GROUP, id);
+    logger.info(msg.updated(MODULE_ER_GROUP, id));
     res.sendStatus(200);
   } catch (err) {
     errorHandler(err, res);
@@ -58,8 +58,8 @@ exports.deleteModuleErGroupById = async function (req, res) {
     const id = req.params.id;
     ut.checkIdParam(id); //throws an error if id is not a number
     if (!(await moduleErGroupService.deleteModuleErGroupById(id)))
-      throw new InvalidParamError(moduleErGroup, id);
-    logger.info(msg.deleted(moduleErGroup, id));
+      throw new InvalidParamError(MODULE_ER_GROUP, id);
+    logger.info(msg.deleted(MODULE_ER_GROUP, id));
     res.sendStatus(200);
   } catch (err) {
     errorHandler(err, res);

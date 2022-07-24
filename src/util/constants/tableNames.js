@@ -6,7 +6,7 @@ module.exports = {
     EXAM_REGULATIONS: "exam_regulations",
     MAJOR: "major",
     ER_GROUP: "er_group",
-    MODUL: "module",
+    MODULE: "module",
     MODULE_ER_GROUP: "module_er_group",
     NOTICE: "notice",
     PERMISSION: "permission",
