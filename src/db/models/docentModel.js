@@ -8,7 +8,7 @@ class Docent extends Model {
 
   static get idColumn() {
     return "docent_id";
-  }
+  } 
 
   static get firstNameColumn() {
     return "first_name";
@@ -33,11 +33,11 @@ class Docent extends Model {
 
       properties: {
         docent_id: { type: "integer" },
-        first_name: { type: "string", minLength: 1, maxLength: 200 },
+        first_name: { type: ["string", "null"], minLength: 1, maxLength: 200 },
         last_name: { type: "string", maxLength: 200 },
-        email: { type: "string", maxLength: 200 },
-        title: { type: "string", maxLength: 100 },
-        job_type: { type: "string", minLength: 1, maxLength: 100 },
+        email: { type: ["string", "null"] || "", maxLength: 200 },
+        title: { type: ["string", "null"], maxLength: 100 },
+        job_type: { type: ["string", "null"], minLength: 1, maxLength: 100 },
       },
     };
   }
@@ -67,8 +67,8 @@ class Docent extends Model {
         join: {
           from: "docent.docent_id",
           to: "user.docent_id",
-        }
-      }
+        },
+      },
     };
   }
 }

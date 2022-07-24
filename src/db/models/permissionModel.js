@@ -26,7 +26,7 @@ class Permission extends Model {
       properties: {
         permission_id: { type: "integer" },
         name: { type: "string", minLength: 1, maxLength: 200 },
-        description: { type: "string", minLength: 0, maxLength: 255 },
+        description: { type: ["string", "null"], minLength: 0, maxLength: 255 },
       },
     };
   }

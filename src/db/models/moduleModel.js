@@ -29,14 +29,14 @@ class Module extends Model {
   static get jsonSchema() {
     return {
       type: "object",
-      required: ["name", "semester", "sws"],
+      required: ["name", "semester"],
 
       properties: {
         module_id: { type: "integer" },
         name: { type: "string", minLength: 1, maxLength: 200 },
         semester: { type: "integer", minLength: 1, maxLength: 15 },
-        sws: { type: "integer", minLength: 1, maxLength: 100 },
-        visibility: { type: "integer", minLength: 1, maxLength: 1 },
+        sws: { type: ["integer", "null"], minLength: 1, maxLength: 100 },
+        visibility: { type: ["integer", "null"], minLength: 1, maxLength: 1 },
       },
     };
   }

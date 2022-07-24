@@ -21,10 +21,10 @@ class ErGroup extends Model {
   static get jsonSchema() {
     return {
       type: "object",
-      required: ["name", "exam_rugulations_id"],
+      required: ["exam_rugulations_id"],
 
       properties: {
-        name: { type: "string", maxLength: 200 },
+        name: { type: ["string", "null"], maxLength: 200 },
         exam_rugulations_id: { type: "integer", minLength: 1 },
       },
     };

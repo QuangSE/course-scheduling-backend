@@ -31,7 +31,7 @@ class DocentCourse extends Model {
         docent_course_id: { type: "integer" },
         docent_id: { type: "integer", minLength: 1 },
         course_id: { type: "integer", minLength: 1 },
-        registered: { type: "integer"}
+        registered: { type: ["integer", "null"]}
       },
     };
   }
