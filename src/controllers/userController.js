@@ -33,7 +33,7 @@ exports.getUserById = async function (req, res) {
 exports.getUserByUsername = async function (req, res) {
   try {
     const username = req.params.username;
-    const result = await userService.getUserByUsername(USERname);
+    const result = await userService.getUserByUsername(username);
     if (result) {
       logger.info(msg.fetched(USER, username));
     }
