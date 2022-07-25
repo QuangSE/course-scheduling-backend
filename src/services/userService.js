@@ -1,7 +1,9 @@
 const User = require("../db/models/userModel");
+const Docent = require("../db/models/docentModel");
+
 
 exports.getAllUsers = function () {
-  return User.query();
+  return User.query().select(raw("username"));
 };
 
 exports.getUserById = function (userId) {
@@ -17,7 +19,7 @@ exports.getDocentOfUser = async function (userId) {
   const docent = await User.query()
     .select("docent.*")
     .innerJoin("docent", "user.docent_id", "docent.docent_id")
-    .where("userId", userId);
+    .where("user_Id", userId);
   return docent;
 };
 

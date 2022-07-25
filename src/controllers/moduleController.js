@@ -3,8 +3,8 @@ const logger = require("../util/logger");
 const errorHandler = require("../middlewares/errorHandler");
 const ut = require("../util/utilFunctions");
 const InvalidParamError = require("../util/customErrors").InvalidParameterError;
-const msg= require("../util/logMessages")
-const MODULE = require("../util/constants/tableNames").MODULE
+const msg = require("../util/logMessages");
+const MODULE = require("../util/constants/tableNames").MODULE;
 
 exports.getAllModules = async function (req, res) {
   try {
@@ -30,10 +30,21 @@ exports.getModuleById = async function (req, res) {
   }
 };
 
+exports.getModuleByName = async function (req, res) {
+  try {
+    const name = req.body.name;
+    const result = await moduleService.getModuleByName(name);
+    logger.debug("response: " + JSON.stringify(result));
+    return res.send(result);
+  } catch (err) {
+    errorHandler(err, res);
+  }
+};
+
 exports.createNewModule = async function (req, res, next) {
   try {
-    await moduleService.createNewModule(req.body)
-    res.status(201).send("OK");
+    const result = await moduleService.createNewModule(req.body);
+    res.status(201).send(result);
     logger.info(msg.created(MODULE));
   } catch (err) {
     errorHandler(err, res);

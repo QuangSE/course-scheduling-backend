@@ -32,9 +32,9 @@ exports.getDocentCourseById = async function (req, res) {
 
 exports.createNewDocentCourse = async function (req, res, next) {
   try {
-    await docentCourseService.createNewDocentCourse(req.body)
-    res.status(201).send("OK");
-    logger.info(msg.createdfetched(DOCENT_COURSE));
+    const result = await docentCourseService.createNewDocentCourse(req.body)
+    res.status(201).send(result);
+    logger.info(msg.created(DOCENT_COURSE));
   } catch (err) {
     errorHandler(err, res);
   }
@@ -46,7 +46,7 @@ exports.updateDocentCourse = async function (req, res) {
     ut.checkIdParam(id); //throws an error if id is not a number
     if (!(await docentCourseService.updateDocentCourse(id, req.body)))
       throw new InvalidParamErrorfetched(DOCENT_COURSE, id);
-    logger.info(msg.updatedfetched(DOCENT_COURSE, id));
+    logger.info(msg.updated(DOCENT_COURSE, id));
     res.sendStatus(200);
   } catch (err) {
     errorHandler(err, res);
@@ -59,7 +59,7 @@ exports.deletedocentCourseById = async function (req, res) {
     ut.checkIdParam(id); //throws an error if id is not a number
     if (!(await docentCourseService.deleteDocentCourseById(id)))
       throw new InvalidParamErrorfetched(DOCENT_COURSE, id);
-    logger.info(msg.deletedfetched(DOCENT_COURSE, id));
+    logger.info(msg.deleted(DOCENT_COURSE, id));
     res.sendStatus(200);
   } catch (err) {
     errorHandler(err, res);

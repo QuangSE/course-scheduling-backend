@@ -3,22 +3,21 @@
 GET http://localhost:3001/api/docent/
 
 ###getDocentbyID
-GET http://localhost:3001/api/docent/1
+GET http://localhost:3001/api/docent/141513
 
 ###createNewDocent
-POST http://localhost:3001/api/docent/new
+POST http://localhost:3001/api/docent/
 Content-Type: application/json
 
 {
 "first_name": "asdtest2",
 "last_name": "test",
-"email": "tetee@hs-kl.de",
 "title": "Prof. Dr",
 "job_type":"Professor"
 }
 
 ###updateDocent
-PUT http://localhost:3001/api/docent/9/edit
+PUT http://localhost:3001/api/docent/9/
 Content-Type: application/json
 
 {
@@ -31,7 +30,12 @@ Content-Type: application/json
 
 
 ###deleteDocentByID
-DELETE http://localhost:3001/api/docent/120/delete
+DELETE http://localhost:3001/api/docent/243/
 
 ###getDocentByLastName
-GET http://localhost:3001/api/docent/Doe
+POST http://localhost:3001/api/docent/by-last-name
+Content-Type: application/json
+
+{
+"last_name": "Doe"
+}

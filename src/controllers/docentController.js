@@ -3,8 +3,8 @@ const logger = require("../util/logger");
 const errorHandler = require("../middlewares/errorHandler");
 const ut = require("../util/utilFunctions");
 const InvalidParamError = require("../util/customErrors").InvalidParameterError;
-const msg= require("../util/logMessages")
-const DOCENT = require("../util/constants/tableNames").DOCENT
+const msg = require("../util/logMessages");
+const DOCENT = require("../util/constants/tableNames").DOCENT;
 
 exports.getAllDocents = async function (req, res) {
   try {
@@ -32,8 +32,8 @@ exports.getDocentById = async function (req, res) {
 
 exports.createNewDocent = async function (req, res, next) {
   try {
-    await docentService.createNewDocent(req.body)
-    res.status(201).send("OK");
+    const result = await docentService.createNewDocent(req.body);
+    res.status(201).send(result);
     logger.info(msg.created(DOCENT));
   } catch (err) {
     errorHandler(err, res);
@@ -76,8 +76,8 @@ exports.deleteDocentById = async function (req, res) {
 
 exports.getDocentByLastName = async function (req, res) {
   try {
-    logger.info("Fetching docent by name " + req.params.lastname);
-    res.send(await docentService.getDocentByLastName(req.params.lastname));
+    logger.info("Fetching docent by name " + req.body.last_name);
+    res.send(await docentService.getDocentByLastName(req.body.last_name));
   } catch (err) {
     errorHandler(err, res);
   }

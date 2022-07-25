@@ -30,10 +30,10 @@ exports.getModuleErGroupById = async function (req, res) {
   }
 };
 
-exports.createNewModuleErGroup = async function (req, res, next) {
+exports.createNewModuleErGroup = async function (req, res,) {
   try {
-    await moduleErGroupService.createNewModuleErGroup(req.body)
-    res.status(201).send("OK");
+    const result = await moduleErGroupService.createNewModuleErGroup(req.body)
+    res.status(201).send(result);
     logger.info(msg.created(MODULE_ER_GROUP));
   } catch (err) {
     errorHandler(err, res);

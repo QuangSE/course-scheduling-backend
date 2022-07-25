@@ -1,0 +1,34 @@
+
+###getAllErGroup
+GET http://localhost:3001/api/erGroup/
+
+
+###get er Groupid by name and er_id
+POST http://localhost:3001/api/erGroup/get-id/
+Content-Type: application/json
+
+{
+"name": "0",
+"exam_regulations_id": "3"
+}
+
+###
+POST http://localhost:3001/api/erGroup/
+Content-Type: application/json
+
+{
+"name": "main",
+"exam_regulations_id": 6
+}
+
+###updateerGroup
+PATCH http://localhost:3001/api/erGroup/3/
+Content-Type: application/json
+
+{
+"exam_regulations_id": 2
+}
+
+
+###deleteerGroupByID
+DELETE http://localhost:3001/api/erGroup/3/

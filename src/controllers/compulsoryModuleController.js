@@ -32,8 +32,8 @@ exports.getCompulsoryModuleById = async function (req, res) {
 
 exports.createNewCompulsoryModule = async function (req, res, next) {
   try {
-    await compulsoryModuleService.createNewCompulsoryModule(req.body)
-    res.status(201).send("OK");
+    const result = await compulsoryModuleService.createNewCompulsoryModule(req.body)
+    res.status(201).send(result);
     logger.info(msg.created(COMPULSORY_MODULE));
   } catch (err) {
     errorHandler(err, res);

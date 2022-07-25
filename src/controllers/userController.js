@@ -60,8 +60,8 @@ exports.getDocentOfUser = async function (req, res) {
 
 exports.createNewUser = async function (req, res, next) {
   try {
-    await userService.createNewUser(req.body);
-    res.status(201).send("OK");
+    const result = await userService.createNewUser(req.body);
+    res.status(201).send(result);
     logger.info(msg.created(USER));
   } catch (err) {
     errorHandler(err, res);

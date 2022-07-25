@@ -1,15 +1,32 @@
 const Module = require("../db/models/moduleModel");
 
-exports.getAllModules = function () {
-  return Module.query();
+/* reqData 
+{
+  majorName: "major_name",
+  degree: "degree",
+
+  examRegulationsYear: "exam_regulations_year
+  erGroupName: "er_group_name",
+
+  moduleName: "module_name",
+  semester: "semester",
+  sws: "sws",
+  visibility: "visibility",
+
+  course
+
+} 
+
+*/
+
+
+exports.importModules = function (reqData) {
+
+  return Module.query().insert(moduleData);
 };
 
 exports.getModuleById = function (moduleId) {
   return Module.query().findById(moduleId);
-};
-
-exports.getModuleByName = function (name) {
-  return Module.query().first().where(Module.nameColumn, name);
 };
 
 exports.createNewModule = function (moduleData) {

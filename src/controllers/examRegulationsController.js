@@ -3,8 +3,9 @@ const logger = require("../util/logger");
 const errorHandler = require("../middlewares/errorHandler");
 const ut = require("../util/utilFunctions");
 const InvalidParamError = require("../util/customErrors").InvalidParameterError;
-const msg= require("../util/logMessages")
-const EXAM_REGULATIONS = require("../util/constants/tableNames").EXAM_REGULATIONS
+const msg = require("../util/logMessages");
+const EXAM_REGULATIONS =
+  require("../util/constants/tableNames").EXAM_REGULATIONS;
 
 exports.getAllExamRegulations = async function (req, res) {
   try {
@@ -32,8 +33,10 @@ exports.getExamRegulationsById = async function (req, res) {
 
 exports.createNewExamRegulations = async function (req, res, next) {
   try {
-    await examRegulationsService.createNewExamRegulations(req.body)
-    res.status(201).send("OK");
+    const result = await examRegulationsService.createNewExamRegulations(
+      req.body
+    );
+    res.status(201).send(result);
     logger.info(msg.created(EXAM_REGULATIONS));
   } catch (err) {
     errorHandler(err, res);

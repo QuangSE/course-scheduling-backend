@@ -3,12 +3,12 @@ const logger = require("../util/logger");
 const errorHandler = require("../middlewares/errorHandler");
 const ut = require("../util/utilFunctions");
 const InvalidParamError = require("../util/customErrors").InvalidParameterError;
-const msg= require("../util/logMessages")
-const ER_GROUP = require("../util/constants/tableNames").ER_GROUP
+const msg = require("../util/logMessages");
+const ER_GROUP = require("../util/constants/tableNames").ER_GROUP;
 
 exports.getAllErGroups = async function (req, res) {
   try {
-    res.send(await erGroupService.getAllerGroups());
+    res.send(await erGroupService.getAllErGroups());
     logger.info(msg.fetchedAll(ER_GROUP));
   } catch (err) {
     errorHandler(err, res);
@@ -30,10 +30,23 @@ exports.getErGroupById = async function (req, res) {
   }
 };
 
+exports.getErGroup = async function (req, res) {
+  try {
+    //TODO: handle req.body error
+    const name = req.body.name;
+    const examRegulationsId = req.body.exam_regulations_id;
+    const result = await erGroupService.getErGroup(name, examRegulationsId);
+
+    return res.send(result);
+  } catch (err) {
+    errorHandler(err, res);
+  }
+};
+
 exports.createNewErGroup = async function (req, res, next) {
   try {
-    await erGroupService.createNewErGroup(req.body)
-    res.status(201).send("OK");
+    const result = await erGroupService.createNewErGroup(req.body);
+    res.status(201).send(result);
     logger.info(msg.created(ER_GROUP));
   } catch (err) {
     errorHandler(err, res);

@@ -1,0 +1,17 @@
+
+###getAllPO
+GET http://localhost:3001/api/examRegulations/
+
+
+###create PO
+POST http://localhost:3001/api//examRegulations/
+Content-Type: application/json
+
+{
+"year":2021,
+"exam_regulations_group":"PO2022&PO2016",
+"major_id":25
+}
+
+###delet PO 
+DELETE http://localhost:3001/api/examRegulations/12/

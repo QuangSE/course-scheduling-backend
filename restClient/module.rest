@@ -1,0 +1,26 @@
+
+###getAllModule
+GET http://localhost:3001/api/module/
+
+
+###createModule
+POST http://localhost:3001/api//module/
+Content-Type: application/json
+
+{
+"name":"Einführung bwl",
+"semester":1,
+"sws":3,
+"visibility":1
+}
+
+###deletModule
+DELETE http://localhost:3001/api/module/1/
+
+###getModuleByNAme
+POST http://localhost:3001/api/module/by-name
+Content-Type: application/json
+
+{
+"name":"Grundlagen der Allgemeinen Betriebswirtschaftslehre"
+}

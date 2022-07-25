@@ -7,7 +7,7 @@ class ErGroup extends Model {
   }
 
   static get idColumn() {
-    return "er_Group_id";
+    return "er_group_id";
   }
 
   static get nameColumn() {
@@ -15,17 +15,17 @@ class ErGroup extends Model {
   }
 
   static get examRegulationsIdColumn() {
-    return "exam_rugulations_id";
+    return "exam_regulations_id";
   }
 
   static get jsonSchema() {
     return {
       type: "object",
-      required: ["exam_rugulations_id"],
+      required: ["exam_regulations_id"],
 
       properties: {
         name: { type: ["string", "null"], maxLength: 200 },
-        exam_rugulations_id: { type: "integer", minLength: 1 },
+        exam_regulations_id: { type: "integer", minLength: 1 },
       },
     };
   }
@@ -62,8 +62,8 @@ class ErGroup extends Model {
         relation: Model.BelongsToOneRelation,
         modelClass: Major,
         join: {
-          from: "er_Group.exam_rugulations_id",
-          to: "major.exam_rugulations_id",
+          from: "er_Group.exam_regulations_id",
+          to: "major.exam_regulations_id",
         },
       }, */
     };

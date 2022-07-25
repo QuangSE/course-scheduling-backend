@@ -1,0 +1,25 @@
+
+###getAllmoduleErGroup
+GET http://localhost:3001/api/moduleErGroup/
+
+
+
+### create modulergroup
+POST http://localhost:3001/api/moduleErGroup/
+Content-Type: application/json
+
+{
+"er_group_id": 3,
+"module_id": 1
+}
+
+###updatemoduleErGroup
+PATCH http://localhost:3001/api/moduleErGroup/3/
+Content-Type: application/json
+
+{
+"exam_regulations_id": 2
+}
+
+###deletemoduleErGroupByID
+DELETE http://localhost:3001/api/moduleErGroup/3/

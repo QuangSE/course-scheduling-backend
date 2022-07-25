@@ -21,6 +21,7 @@ const router = express.Router();
 router.use("/auth", authenticationRouter);
 /* router.use("/", authenticateToken); */
 
+//TODO: endpoint url hyphen-ated instead of camelCase
 router.use("/docent", auth([permissionId.ADMIN]), docentRouter);
 router.use("/user", userRouter);
 router.use("/permission", auth([permissionId.ADMIN]), permissionRouter);
@@ -29,8 +30,8 @@ router.use("/course", auth([permissionId.ADMIN]), courseRouter);
 router.use("/module", auth([permissionId.ADMIN]), moduleRouter);
 router.use("/major", auth([permissionId.ADMIN]), majorRouter);
 router.use("/examRegulations", auth([permissionId.ADMIN]), examRegulationsRouter);
-router.use("/compulsoryModuleRouter", auth([permissionId.ADMIN]), compulsoryModuleRouter);
-router.use("/erGroupRouter", auth([permissionId.ADMIN]), erGroupRouter);
-router.use("/moduleErGroupRouter", auth([permissionId.ADMIN]), moduleErGroupRouter);
+router.use("/compulsoryModule", auth([permissionId.ADMIN]), compulsoryModuleRouter);
+router.use("/erGroup", auth([permissionId.ADMIN]), erGroupRouter);
+router.use("/moduleErGroup", auth([permissionId.ADMIN]), moduleErGroupRouter);
 
 module.exports = router;

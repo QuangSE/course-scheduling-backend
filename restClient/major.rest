@@ -40,8 +40,7 @@ POST http://localhost:3001/api//examRegulations/
 Content-Type: application/json
 
 {
-"degree":"Bachelor",
-"year":"2013",
+"year":2013,
 "exam_regulations_group":"",
-"name":"1"
+"major_id":1
 }

@@ -6,6 +6,7 @@ const router = express.Router();
 
 router.get("/", erGroupController.getAllErGroups);
 router.get("/:id", erGroupController.getErGroupById);
+router.post("/by-name/", erGroupController.getErGroup)
 router.post("/", erGroupController.createNewErGroup);
 router.patch("/:id/", erGroupController.updateErGroup); 
 router.delete("/:id/", erGroupController.deleteErGroupById);

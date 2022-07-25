@@ -33,8 +33,8 @@ class Course extends Model {
 
       properties: {
         course_id: { type: "integer" },
-        name: { type: "string", minLength: 1, maxLength: 150 },
-        lsws: { type: "string", minLength: 1, maxLength: 64 },
+        name: { type: "string", minLength: 1, maxLength: 200 },
+        lsws: { type: "integer", minLength: 1, maxLength: 64 },
         module_id: { type: "integer", minLength: 1 },
       },
     };

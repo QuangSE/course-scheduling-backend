@@ -10,7 +10,7 @@ const {
   WrongPasswordError,
 } = require("../util/customErrors");
 
-exports.verifyLogin = async function (req, res) {
+exports.createSession = async function (req, res) {
   try {
     const loginDetails = req.body;
     if (!("username" in loginDetails) || !("password" in loginDetails)) {
@@ -28,7 +28,14 @@ exports.verifyLogin = async function (req, res) {
       throw new WrongPasswordError(username);
     }
 
-    req.session.user = result;
+    const userInfos = {
+      user_id: result.user_id,
+      username: result.username,
+      permission_id: result.permission_id,
+      docent_id: result.docent_id,
+    };
+
+    req.session.user = userInfos;
 
     res.send(req.session.user);
 
@@ -42,27 +49,28 @@ exports.verifyLogin = async function (req, res) {
   }
 };
 
-exports.getLoginStatus = async function (req, res) {
+exports.getSession = async function (req, res) {
   try {
     if (req.session.user) {
-      logger.debug("session exist for user: " + req.session.user.username)
+      logger.debug("session exist for user: " + req.session.user.username);
       res.send({ session: true, user: req.session.user });
     } else {
       logger.debug("session not exist");
-      res.send({ session: false});
+      res.send({ session: false });
     }
-
   } catch (err) {
     errorHandler(err, res);
   }
 };
 
-exports.logout = async function (req, res) {
+exports.deleteSession = async function (req, res) {
   try {
-    logger.info(`'${req.session.user.username}' logged out successfully`)
+    if (!req.session.user) {
+      return res.send("Session already deleted");
+    }
+    logger.info(`Session deleted for '${req.session.user.username}'`);
     req.session = null;
-    res.status(204).send("Successfully logged out")
-
+    res.status(204).send("Session deleted");
   } catch (err) {
     errorHandler(err, res);
   }

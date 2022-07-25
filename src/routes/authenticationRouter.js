@@ -5,9 +5,9 @@ const authenticationController = require("../controllers/authenticationControlle
 const router = express.Router();
 
 
-router.post("/login", authenticationController.verifyLogin);
-router.get("/login", authenticationController.getLoginStatus);
-router.post("/logout", authenticationController.logout);
+router.post("/create-session", authenticationController.createSession);
+router.get("/session", authenticationController.getSession);
+router.post("/delete-session", authenticationController.deleteSession);
 
 module.exports = router;
 

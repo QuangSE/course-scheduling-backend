@@ -1,0 +1,28 @@
+
+###getAlldocentCourse
+GET http://localhost:3001/api/docentCourse/
+
+
+
+
+###
+POST http://localhost:3001/api/docentCourse/
+Content-Type: application/json
+
+{
+"docent_id": 1,
+"course_id": 1,
+"registered": 0
+}
+
+###updatedocentCourse
+PATCH http://localhost:3001/api/docentCourse/3/
+Content-Type: application/json
+
+{
+"exam_regulations_id": 2
+}
+
+
+###deletedocentCourseByID
+DELETE http://localhost:3001/api/docentCourse/3/

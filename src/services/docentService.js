@@ -23,5 +23,5 @@ exports.deleteDocentById = function (id) {
 };
 
 exports.getDocentByLastName = function (lastName) {
-  return Docent.query().where(Docent.getLastNameColumn(), lastName);
+  return Docent.query().first().where(Docent.lastNameColumn, lastName);
 };

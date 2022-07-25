@@ -7,6 +7,7 @@ const router = express.Router();
 router.get("/", moduleController.getAllModules);
 router.get("/:id", moduleController.getModuleById);
 router.post("/", moduleController.createNewModule);
+router.post("/by-name", moduleController.getModuleByName);
 router.patch("/:id/", moduleController.updateModule); 
 router.delete("/:id/", moduleController.deleteModuleById);
 

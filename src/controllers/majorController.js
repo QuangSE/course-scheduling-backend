@@ -32,8 +32,8 @@ exports.getMajorById = async function (req, res) {
 
 exports.createNewMajor = async function (req, res, next) {
   try {
-    await majorService.createNewMajor(req.body)
-    res.status(201).send("OK");
+    const result = await majorService.createNewMajor(req.body)
+    res.status(201).send(result);
     logger.info(msg.created(MAJOR));
   } catch (err) {
     errorHandler(err, res);

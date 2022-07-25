@@ -32,8 +32,8 @@ exports.getPermissionById = async function (req, res) {
 
 exports.createNewPermission = async function (req, res, next) {
   try {
-    await permissionService.createNewPermission(req.body)
-    res.status(201).send("OK");
+    result = await permissionService.createNewPermission(req.body)
+    res.status(201).send(result);
     logger.info(msg.created(PERMISSION));
   } catch (err) {
     errorHandler(err, res);
