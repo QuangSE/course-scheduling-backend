@@ -1,10 +1,10 @@
 
 ###getAllPO
-GET http://localhost:3001/api/examRegulations/
+GET http://localhost:3001/api/exam-regulations/
 
 
 ###create PO
-POST http://localhost:3001/api//examRegulations/
+POST http://localhost:3001/api//exam-regulations/
 Content-Type: application/json
 
 {
@@ -14,4 +14,16 @@ Content-Type: application/json
 }
 
 ###delet PO 
-DELETE http://localhost:3001/api/examRegulations/12/
+DELETE http://localhost:3001/api/exam-regulations/12/
+
+
+###get senester
+GET http://localhost:3001/api/exam-regulations/6/number-of-semesters
+
+
+
+###get courses
+GET http://localhost:3001/api/exam-regulations/6/courses
+
+###get courses
+GET http://localhost:3001/api/exam-regulations/all/overview/courses

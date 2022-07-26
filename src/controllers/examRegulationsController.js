@@ -68,3 +68,62 @@ exports.deleteExamRegulationsById = async function (req, res) {
     errorHandler(err, res);
   }
 };
+
+exports.getMajor = async function (req, res) {
+  try {
+    const id = req.params.id;
+    ut.checkIdParam(id); 
+    const result = await examRegulationsService.getMajor(id);
+    if (result) {
+      logger.info(msg.fetched(EXAM_REGULATIONS, id));
+      return res.send(result);
+    }
+    throw new InvalidParamError(EXAM_REGULATIONS, id);
+  } catch (err) {
+    errorHandler(err, res);
+  }
+};
+
+
+exports.getNumberOfSemesters = async function (req, res) {
+  try {
+    const id = req.params.id;
+    ut.checkIdParam(id); 
+    const result = await examRegulationsService.getNumberOfSemesters(id);
+    if (result) {
+      logger.info(msg.fetched(EXAM_REGULATIONS, id));
+      return res.send(result);
+    }
+    throw new InvalidParamError(EXAM_REGULATIONS, id);
+  } catch (err) {
+    errorHandler(err, res);
+  }
+};
+
+exports.getCourses = async function (req, res) {
+  try {
+    const id = req.params.id;
+    ut.checkIdParam(id); 
+    const result = await examRegulationsService.getCourses(id);
+    if (result) {
+      logger.info("Courses for exam regulation with ID " + id + " fetched");
+      return res.send(result);
+    }
+    throw new InvalidParamError(EXAM_REGULATIONS, id);
+  } catch (err) {
+    errorHandler(err, res);
+  }
+};
+
+exports.getAllCourses = async function (req, res) {
+  try {
+    const result = await examRegulationsService.getAllCourses();
+    if (result) {
+      logger.info("Courses for all exam regulation fetched");
+      return res.send(result);
+    }
+    throw new InvalidParamError(EXAM_REGULATIONS, id);
+  } catch (err) {
+    errorHandler(err, res);
+  }
+};

@@ -32,3 +32,9 @@ Content-Type: application/json
 
 ###deleteerGroupByID
 DELETE http://localhost:3001/api/erGroup/3/
+
+###get senester
+GET http://localhost:3001/api/erGroup/6/number-of-semesters
+
+###get courses
+GET http://localhost:3001/api/erGroup/6/courses

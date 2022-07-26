@@ -78,3 +78,33 @@ exports.deleteErGroupById = async function (req, res) {
     errorHandler(err, res);
   }
 };
+
+exports.getNumberOfSemesters = async function (req, res) {
+  try {
+    const examRegId = req.params.id;
+    ut.checkIdParam(examRegId);
+    const result = await erGroupService.getNumberOfSemesters(examRegId);
+    if (result) {
+      logger.info("OK");
+      return res.send(result);
+    }
+    throw new InvalidParamError(ER_GROUP, examRegId);
+  } catch (err) {
+    errorHandler(err, res);
+  }
+};
+
+exports.getCourses = async function (req, res) {
+  try {
+    const examRegId = req.params.id;
+    ut.checkIdParam(examRegId);
+    const result = await erGroupService.getCourses();
+    if (result) {
+      logger.info("OK");
+      return res.send(result);
+    }
+    throw new InvalidParamError(ER_GROUP, examRegId);
+  } catch (err) {
+    errorHandler(err, res);
+  }
+};

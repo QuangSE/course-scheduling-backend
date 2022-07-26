@@ -33,17 +33,18 @@ class ErGroup extends Model {
   static get relationMappings() {
     const Module = require("./moduleModel");
     const ModuleErGroup = require("./moduleErGroupModel");
-    const Major = require("./majorModel")
+    const ExamRegulations = require("./examRegulationsModel");
+   
     return {
       modules: {
         relation: Model.ManyToManyRelation,
         modelClass: Module,
         join: {
-          from: "er_Group.er_Group.id",
+          from: "er_group.er_group_id",
           through: {
             modelClass: ModuleErGroup,
-            from: "module_er_Group.er_Group.id",
-            to: "module_er_Group.module_id",
+            from: "module_er_group.er_group_id",
+            to: "module_er_group.module_id",
           },
           to: "module.module_id",
         },
@@ -53,19 +54,19 @@ class ErGroup extends Model {
         relation: Model.HasManyRelation,
         modelClass: ModuleErGroup,
         join: {
-          from: "er_Group.er_Group_id",
-          to: "module_er_Group.er_Group_id",
+          from: "er_group.er_group_id",
+          to: "module_er_group.er_group_id",
         },
       },
 
-   /*    major: {
+      examRegulations: {
         relation: Model.BelongsToOneRelation,
-        modelClass: Major,
+        modelClass: ExamRegulations,
         join: {
-          from: "er_Group.exam_regulations_id",
-          to: "major.exam_regulations_id",
+          from: "er_group.exam_regulations_id",
+          to: "exam_regulations.exam_regulations_id",
         },
-      }, */
+      },
     };
   }
 }

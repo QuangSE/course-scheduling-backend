@@ -9,9 +9,20 @@ POST http://localhost:3001/api/moduleErGroup/
 Content-Type: application/json
 
 {
-"er_group_id": 3,
-"module_id": 1
+    "er_group_id": 300,
+    "module_id": 365
 }
+
+### check
+POST http://localhost:3001/api/moduleErGroup/exists
+Content-Type: application/json
+
+{
+    "er_group_id": 300,
+    "module_id": 3
+}
+
+
 
 ###updatemoduleErGroup
 PATCH http://localhost:3001/api/moduleErGroup/3/

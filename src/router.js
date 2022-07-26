@@ -29,7 +29,7 @@ router.use("/docentCourse", auth([permissionId.ADMIN, permissionId.USER]), docen
 router.use("/course", auth([permissionId.ADMIN]), courseRouter);
 router.use("/module", auth([permissionId.ADMIN]), moduleRouter);
 router.use("/major", auth([permissionId.ADMIN]), majorRouter);
-router.use("/examRegulations", auth([permissionId.ADMIN]), examRegulationsRouter);
+router.use("/exam-regulations", auth([permissionId.ADMIN]), examRegulationsRouter);
 router.use("/compulsoryModule", auth([permissionId.ADMIN]), compulsoryModuleRouter);
 router.use("/erGroup", auth([permissionId.ADMIN]), erGroupRouter);
 router.use("/moduleErGroup", auth([permissionId.ADMIN]), moduleErGroupRouter);

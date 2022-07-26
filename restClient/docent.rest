@@ -3,7 +3,7 @@
 GET http://localhost:3001/api/docent/
 
 ###getDocentbyID
-GET http://localhost:3001/api/docent/141513
+GET http://localhost:3001/api/docent/1
 
 ###createNewDocent
 POST http://localhost:3001/api/docent/

@@ -22,5 +22,5 @@ POST http://localhost:3001/api/module/by-name
 Content-Type: application/json
 
 {
-"name":"Grundlagen der Allgemeinen Betriebswirtschaftslehre"
+"name":"Englisch Grundlagen"
 }

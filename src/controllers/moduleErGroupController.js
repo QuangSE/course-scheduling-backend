@@ -65,3 +65,17 @@ exports.deleteModuleErGroupById = async function (req, res) {
     errorHandler(err, res);
   }
 };
+
+exports.checkExistingModuleErGroup = async function (req, res) {
+  try {
+    //TODO: handle req.body error
+    const er_goup_id = req.body.er_group_id;
+    const module_id = req.body.module_id;
+    console.log(er_goup_id, module_id);
+    const result = await moduleErGroupService.getModuleErGroupByErGoupIdModuleId(er_goup_id, module_id);
+
+    return res.send(result);
+  } catch (err) {
+    errorHandler(err, res);
+  }
+}

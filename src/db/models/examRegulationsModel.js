@@ -39,6 +39,7 @@ class ExamRegulations extends Model {
   
   static get relationMappings() {
     const Major = require("./majorModel");
+    const ErGroup = require("./erGroupModel");
     return {
       major: {
         relation: Model.BelongsToOneRelation,
@@ -48,6 +49,16 @@ class ExamRegulations extends Model {
           to: "major.major_id",
         },
       },
+      
+      erGroups: {
+        relation: Model.HasManyRelation,
+        modelClass: ErGroup,
+        join: {
+          from: "exam_regulations.exam_regulations_id",
+          to: "er_group.exam_regulations_id", 
+        }
+      }, 
+      
     };
   }
 }

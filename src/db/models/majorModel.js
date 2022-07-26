@@ -41,14 +41,7 @@ class Major extends Model {
  
       //TODO: Check nestled "through" mappings for retrieving all modules of a major
 
-      majorGroups: {
-        relation: Model.HasManyRelation,
-        modelClass: MajorGroup,
-        join: {
-          from: "major.major_id",
-          to: "major_group.major_id", 
-        }
-      },
+
 
       compulsoryModules: {
         relation: Model.ManyToManyRelation,

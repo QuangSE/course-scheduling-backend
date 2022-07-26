@@ -3,7 +3,7 @@ const errNames = require("./constants/errorNames");
 
 function InvalidParameterError(tableName, id, message) {
   this.name = errNames.INVALID_PARAMETER_ERROR;
-  this.message = message ? message :`A '${tableName}' with ID '${id}' does not exist`;
+  this.message = message ? message :`URL Paramater invalid. A '${tableName}' with ID '${id}' does not exist`;
   this.stack = this.name + ": " + this.message + ", " + this.stack
 }
 

@@ -22,20 +22,28 @@ class DocentCourse extends Model {
     return "registered_id";
   }
 
+  static get updated_at() {
+    return "updated_at";
+  }
+
+  static get registeredColumn() {
+    return "updated_by";
+  }
+
   static get jsonSchema() {
     return {
       type: "object",
-      required: ["docent_id", "course_id"],
+      required: ["docent_id", "course_id"], //TODO: updated_by should also be required for FA5
 
       properties: {
         docent_course_id: { type: "integer" },
         docent_id: { type: "integer", minLength: 1 },
         course_id: { type: "integer", minLength: 1 },
-        registered: { type: ["integer", "null"]}
+        registered: { type: ["integer", "null"] },
+        updated_by: { type: ["integer", "null"] },
       },
     };
   }
-
 
   static get relationMappings() {
     const Course = require("./courseModel");
@@ -55,9 +63,9 @@ class DocentCourse extends Model {
         modelClass: Docent,
         join: {
           from: "docent_course.docent_id",
-          to: "docent.docent_id", 
-        }
-      }
+          to: "docent.docent_id",
+        },
+      },
     };
   }
 }
