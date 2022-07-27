@@ -3,7 +3,7 @@ const Docent = require("../db/models/docentModel");
 
 
 exports.getAllUsers = function () {
-  return User.query().select(raw("username"));
+  return User.query();
 };
 
 exports.getUserById = function (userId) {
