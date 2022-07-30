@@ -14,7 +14,7 @@ class DocentCourse extends Model {
     return "docent_id";
   }
 
-  static get courseColumn() {
+  static get courseIdColumn() {
     return "course_id";
   }
 

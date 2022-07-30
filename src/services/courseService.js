@@ -13,7 +13,7 @@ exports.createNewCourse = function (courseData) {
 };
 
 exports.updateCourse = async function (courseId, courseData) {
-  const result = await course.query()
+  const result = await Course.query()
     .findById(courseId)
     .patch(courseData); //TODO: why async?
   return result;

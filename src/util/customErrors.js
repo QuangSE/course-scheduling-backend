@@ -23,16 +23,14 @@ InvalidReqBodyError.prototype = new Error();
 function InvalidUsernameError(username) {
   this.name = errNames.INVALID_USERNAME_ERROR;
   this.message = `A 'user' with username '${username}' does not exist`;
-  this.stack = this.name + ": " + this.message + ", " + this.stack
+  this.stack = this.name + ": " + this.message
 }
-InvalidUsernameError.prototype = new Error();
 
 function WrongPasswordError(username) {
   this.name = errNames.INVALID_PASSWORD_ERROR;
   this.message = `Password does not match with username '${username}`;
-  this.stack = this.name + ": " + this.message + ", " + this.stack
+  this.stack = this.name + ": " + this.message
 }
-WrongPasswordError.prototype = new Error();
 
 function InvalidTokenError(status = 403, message = "Access token expired") {
   this.status = status;

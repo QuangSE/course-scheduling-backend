@@ -82,3 +82,13 @@ exports.getDocentByLastName = async function (req, res) {
     errorHandler(err, res);
   }
 };
+
+
+
+exports.getMinimalDocentList = async function (req, res) {
+  try {
+    res.send(await docentService.getMinimalDocentList());
+  } catch (err) {
+    errorHandler(err, res);
+  }
+};

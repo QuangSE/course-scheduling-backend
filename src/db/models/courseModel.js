@@ -34,7 +34,7 @@ class Course extends Model {
       properties: {
         course_id: { type: "integer" },
         name: { type: "string", minLength: 1, maxLength: 200 },
-        lsws: { type: "integer", minLength: 1, maxLength: 64 },
+        lsws: { type: "number", minLength: 1, maxLength: 64 }, //FIXME: float validation is fucking up the system
         module_id: { type: "integer", minLength: 1 },
       },
     };

@@ -58,8 +58,10 @@ exports.getDocentOfUser = async function (req, res) {
   }
 };
 
-exports.createNewUser = async function (req, res, next) {
+exports.createNewUser = async function (req, res) {
   try {
+    const userData = req.body;
+    userData.permission = userData.permission ? userData.permission : 2;
     const result = await userService.createNewUser(req.body);
     res.status(201).send(result);
     logger.info(msg.created(USER));

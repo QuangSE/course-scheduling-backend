@@ -67,8 +67,7 @@ exports.getCourses = async function (examRegulationsId) {
   const courses = await ExamRegulations.query()
     .withGraphFetched("erGroups")
     .modifyGraph("erGroups", (builder) => {
-      builder.withGraphFetched("modules")
-      .modifyGraph("modules", (builder) => {
+      builder.withGraphFetched("modules").modifyGraph("modules", (builder) => {
         builder.withGraphFetched("courses");
       });
     })
@@ -77,17 +76,23 @@ exports.getCourses = async function (examRegulationsId) {
   return courses;
 };
 
-
 exports.getAllCourses = async function () {
   const courses = await ExamRegulations.query()
+    .withGraphFetched("major")
     .withGraphFetched("erGroups")
     .modifyGraph("erGroups", (builder) => {
-      builder.withGraphFetched("modules")
-      .modifyGraph("modules", (builder) => {
-        builder.withGraphFetched("courses");
+      builder.withGraphFetched("modules").modifyGraph("modules", (builder) => {
+        builder
+          .withGraphFetched("courses")
+          .modifyGraph("courses", (builder) => {
+            builder
+              .withGraphFetched("docentCourses")
+              .modifyGraph("docentCourses", (builder) => {
+                builder.withGraphFetched("docent");
+              });
+          });
       });
-    })
+    });
 
   return courses;
 };
-

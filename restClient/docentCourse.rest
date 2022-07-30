@@ -1,28 +1,37 @@
 
 ###getAlldocentCourse
-GET http://localhost:3001/api/docentCourse/
+GET http://localhost:3001/api/docent-course/
 
 
 
 
 ###
-POST http://localhost:3001/api/docentCourse/
+POST http://localhost:3001/api/docent-course/
 Content-Type: application/json
 
 {
 "docent_id": 1,
-"course_id": 1,
-"registered": 0
+"course_id": 446,
+"registered": 1
 }
 
-###updatedocentCourse
-PATCH http://localhost:3001/api/docentCourse/3/
+###get docent course by course_id docent_id
+POST http://localhost:3001/api/docent-course/by-ids
 Content-Type: application/json
 
 {
-"exam_regulations_id": 2
+"docent_id": 195,
+"course_id": 447
+}
+
+###updatedocentCourse
+PATCH http://localhost:3001/api/docent-course/217/
+Content-Type: application/json
+
+{
+"registered": 0
 }
 
 
 ###deletedocentCourseByID
-DELETE http://localhost:3001/api/docentCourse/3/
+DELETE http://localhost:3001/api/docent-course/235/

@@ -2,6 +2,9 @@
 ###getAllDocents
 GET http://localhost:3001/api/docent/
 
+###getminimaldocentlist
+GET http://localhost:3001/api/docent/list/minimal
+
 ###getDocentbyID
 GET http://localhost:3001/api/docent/1
 
@@ -17,15 +20,13 @@ Content-Type: application/json
 }
 
 ###updateDocent
-PUT http://localhost:3001/api/docent/9/
+PUT http://localhost:3001/api/docent/1/
 Content-Type: application/json
 
 {
-"first_name": "Pedravic",
-"last_name": "Barclay",
-"email": "Pedra.Barclay@hs-kl",
-"title": "Prof. Dr",
-"job_type":"Professor"
+"first_name": "Max",
+"last_name": "Mustermann",
+"email": "max@mustermann.de"
 }
 
 

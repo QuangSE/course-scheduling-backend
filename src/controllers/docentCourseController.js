@@ -9,7 +9,7 @@ const DOCENT_COURSE = require("../util/constants/tableNames").DOCENT_COURSE
 exports.getAllDocentCourses = async function (req, res) {
   try {
     res.send(await docentCourseService.getAllDocentCourses());
-    logger.info(msg.fetchedAllfetched(DOCENT_COURSE));
+    logger.info(msg.fetchedAll(DOCENT_COURSE));
   } catch (err) {
     errorHandler(err, res);
   }
@@ -32,7 +32,9 @@ exports.getDocentCourseById = async function (req, res) {
 
 exports.createNewDocentCourse = async function (req, res, next) {
   try {
-    const result = await docentCourseService.createNewDocentCourse(req.body)
+    let docentCourseData = req.body;
+    req.body.updated_by = req.session.user.docent_id;
+    const result = await docentCourseService.createNewDocentCourse(docentCourseData)
     res.status(201).send(result);
     logger.info(msg.created(DOCENT_COURSE));
   } catch (err) {
@@ -61,6 +63,19 @@ exports.deletedocentCourseById = async function (req, res) {
       throw new InvalidParamErrorfetched(DOCENT_COURSE, id);
     logger.info(msg.deleted(DOCENT_COURSE, id));
     res.sendStatus(200);
+  } catch (err) {
+    errorHandler(err, res);
+  }
+};
+
+exports.getDocentCourse = async function (req, res) {
+  try {
+    //TODO: handle req.body error
+    const docentId = req.body.docent_id;
+    const courseId = req.body.course_id;
+    const result = await docentCourseService.getDocentCourse(docentId, courseId);
+
+    return res.send(result);
   } catch (err) {
     errorHandler(err, res);
   }

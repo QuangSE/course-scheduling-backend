@@ -1,19 +1,10 @@
 
 ###getAllErGroup
-GET http://localhost:3001/api/erGroup/
+GET http://localhost:3001/api/er-group/
 
 
 ###get er Groupid by name and er_id
-POST http://localhost:3001/api/erGroup/get-id/
-Content-Type: application/json
-
-{
-"name": "0",
-"exam_regulations_id": "3"
-}
-
-###
-POST http://localhost:3001/api/erGroup/
+POST http://localhost:3001/api/er-group/by-name
 Content-Type: application/json
 
 {
@@ -21,8 +12,17 @@ Content-Type: application/json
 "exam_regulations_id": 6
 }
 
+###
+POST http://localhost:3001/api/er-group/
+Content-Type: application/json
+
+{
+"name": "sd",
+"exam_regulations_id": 6
+}
+
 ###updateerGroup
-PATCH http://localhost:3001/api/erGroup/3/
+PATCH http://localhost:3001/api/er-group/3/
 Content-Type: application/json
 
 {
@@ -31,10 +31,10 @@ Content-Type: application/json
 
 
 ###deleteerGroupByID
-DELETE http://localhost:3001/api/erGroup/3/
+DELETE http://localhost:3001/api/er-group/306/
 
 ###get senester
-GET http://localhost:3001/api/erGroup/6/number-of-semesters
+GET http://localhost:3001/api/er-group/6/number-of-semesters
 
 ###get courses
-GET http://localhost:3001/api/erGroup/6/courses
+GET http://localhost:3001/api/er-group/6/courses

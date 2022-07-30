@@ -66,7 +66,7 @@ exports.deleteModuleErGroupById = async function (req, res) {
   }
 };
 
-exports.checkExistingModuleErGroup = async function (req, res) {
+exports.getModuleErGroupByIds = async function (req, res) {
   try {
     //TODO: handle req.body error
     const er_goup_id = req.body.er_group_id;

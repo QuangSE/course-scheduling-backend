@@ -3,8 +3,8 @@ const logger = require("../util/logger");
 const errorHandler = require("../middlewares/errorHandler");
 const ut = require("../util/utilFunctions");
 const InvalidParamError = require("../util/customErrors").InvalidParameterError;
-const msg= require("../util/logMessages")
-const COURSE = require("../util/constants/tableNames").COURSE
+const msg = require("../util/logMessages");
+const COURSE = require("../util/constants/tableNames").COURSE;
 
 exports.getAllCourses = async function (req, res) {
   try {
@@ -32,7 +32,9 @@ exports.getCourseById = async function (req, res) {
 
 exports.createNewCourse = async function (req, res, next) {
   try {
-    const result = await courseService.createNewCourse(req.body)
+    let courseData = req.body;
+    courseData.lsws = parseFloat(courseData.lsws);
+    const result = await courseService.createNewCourse(courseData);
     res.status(201).send(result);
     logger.info(msg.created(COURSE));
   } catch (err) {
@@ -43,8 +45,12 @@ exports.createNewCourse = async function (req, res, next) {
 exports.updateCourse = async function (req, res) {
   try {
     const id = req.params.id;
-    ut.checkIdParam(id); //throws an error if id is not a number
-    if (!(await courseService.updateCourse(id, req.body)))
+    ut.checkIdParam(id);
+    let courseData = req.body;
+    if(courseData.lsws) {
+      courseData.lsws = parseFloat(courseData.lsws);
+    }
+    if (!(await courseService.updateCourse(id, courseData)))
       throw new InvalidParamError(COURSE, id);
     logger.info(msg.updated(COURSE, id));
     res.sendStatus(200);

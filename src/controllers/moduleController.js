@@ -30,10 +30,11 @@ exports.getModuleById = async function (req, res) {
   }
 };
 
-exports.getModuleByName = async function (req, res) {
+exports.getModuleByNameSemester = async function (req, res) {
   try {
     const name = req.body.name;
-    const result = await moduleService.getModuleByName(name);
+    const semester = req.body.semester;
+    const result = await moduleService.getModuleByNameSemester(name, semester);
     logger.debug("response: " + JSON.stringify(result));
     return res.send(result);
   } catch (err) {
@@ -76,3 +77,18 @@ exports.deleteModuleById = async function (req, res) {
     errorHandler(err, res);
   }
 };
+
+exports.getCoursesWithModuleId = async function(req, res) {
+  try {
+    const id = req.params.id;
+    ut.checkIdParam(id);
+    const result = await moduleService.getCoursesWithModuleId(id);
+    if (result) {
+      logger.debug("length of courses with module " + result.length)
+      return res.send(result);
+    }
+    throw new InvalidParamError(MODULE, id);
+  } catch (err) {
+    errorHandler(err, res);
+  }
+}

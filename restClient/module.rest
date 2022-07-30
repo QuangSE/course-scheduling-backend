@@ -2,14 +2,23 @@
 ###getAllModule
 GET http://localhost:3001/api/module/
 
+###getmodule
+GET http://localhost:3001/api/module/449/
+
+
+
+###getcourses 
+GET http://localhost:3001/api/module/449/courses
+
+
 
 ###createModule
 POST http://localhost:3001/api//module/
 Content-Type: application/json
 
 {
-"name":"Einführung bwl",
-"semester":1,
+"name":"test",
+"semester":1.6234,
 "sws":3,
 "visibility":1
 }
@@ -22,5 +31,5 @@ POST http://localhost:3001/api/module/by-name
 Content-Type: application/json
 
 {
-"name":"Englisch Grundlagen"
+"name":"testtesttesttest"
 }

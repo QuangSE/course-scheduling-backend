@@ -25,3 +25,7 @@ exports.deleteDocentById = function (id) {
 exports.getDocentByLastName = function (lastName) {
   return Docent.query().first().where(Docent.lastNameColumn, lastName);
 };
+
+exports.getMinimalDocentList = function () {
+  return Docent.query().select(Docent.idColumn, Docent.lastNameColumn, Docent.firstNameColumn)
+};

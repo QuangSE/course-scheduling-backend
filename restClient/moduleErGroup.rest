@@ -1,11 +1,11 @@
 
 ###getAllmoduleErGroup
-GET http://localhost:3001/api/moduleErGroup/
+GET http://localhost:3001/api/module-er-group/
 
 
 
 ### create modulergroup
-POST http://localhost:3001/api/moduleErGroup/
+POST http://localhost:3001/api/module-er-group/
 Content-Type: application/json
 
 {
@@ -14,18 +14,18 @@ Content-Type: application/json
 }
 
 ### check
-POST http://localhost:3001/api/moduleErGroup/exists
+POST http://localhost:3001/api/module-er-group/by-ids
 Content-Type: application/json
 
 {
-    "er_group_id": 300,
-    "module_id": 3
+    "er_group_id": 301,
+    "module_id": 394
 }
 
 
 
 ###updatemoduleErGroup
-PATCH http://localhost:3001/api/moduleErGroup/3/
+PATCH http://localhost:3001/api/module-er-group/3/
 Content-Type: application/json
 
 {
@@ -33,4 +33,4 @@ Content-Type: application/json
 }
 
 ###deletemoduleErGroupByID
-DELETE http://localhost:3001/api/moduleErGroup/3/
+DELETE http://localhost:3001/api/module-er-group/3/

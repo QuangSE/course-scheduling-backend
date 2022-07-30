@@ -19,3 +19,11 @@ exports.updateDocentCourse = async function (docentCourseId, docentCourseData) {
 exports.deleteDocentCourseById = function (docentCourseId) {
   return DocentCourse.query().deleteById(docentCourseId);
 };
+
+exports.getDocentCourse = async function (docentId, courseId) {
+  const DocentCourseId = await DocentCourse.query()
+    .first()
+    .where(DocentCourse.docentIdColumn, docentId)
+    .where(DocentCourse.courseIdColumn, courseId);
+  return DocentCourseId;
+};
