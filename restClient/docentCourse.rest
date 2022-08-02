@@ -24,6 +24,14 @@ Content-Type: application/json
 "course_id": 447
 }
 
+###get docent course by course_id docent_id
+POST http://localhost:3001/api/docent-course/by-course-id
+Content-Type: application/json
+
+{
+"course_id": 577
+}
+
 ###updatedocentCourse
 PATCH http://localhost:3001/api/docent-course/217/
 Content-Type: application/json

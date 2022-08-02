@@ -1,4 +1,4 @@
-const Module = require("../db/models/moduleModel");
+const Module = require('../db/models/moduleModel')
 
 /* reqData 
 {
@@ -19,27 +19,23 @@ const Module = require("../db/models/moduleModel");
 
 */
 
-
 exports.importModules = function (reqData) {
-
-  return Module.query().insert(moduleData);
-};
+    return Module.query().insert(moduleData)
+}
 
 exports.getModuleById = function (moduleId) {
-  return Module.query().findById(moduleId);
-};
+    return Module.query().findById(moduleId)
+}
 
 exports.createNewModule = function (moduleData) {
-  return Module.query().insert(moduleData);
-};
+    return Module.query().insert(moduleData)
+}
 
 exports.updateModule = async function (moduleId, moduleData) {
-  const result = await Module.query()
-    .findById(moduleId)
-    .patch(moduleData); //TODO: why async?
-  return result;
-};
+    const result = await Module.query().findById(moduleId).patch(moduleData) //TODO: why async?
+    return result
+}
 
 exports.deleteModuleById = function (moduleId) {
-  return Module.query().deleteById(moduleId);
-};
+    return Module.query().deleteById(moduleId)
+}

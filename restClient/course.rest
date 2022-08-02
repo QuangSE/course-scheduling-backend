@@ -14,7 +14,7 @@ Content-Type: application/json
 
 {
 "name": "testcourse",
-"lsws": "2",
+"lsws": 2.3213,
 "module_id": 1
 }
 
