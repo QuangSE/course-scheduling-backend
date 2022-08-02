@@ -1,21 +1,21 @@
-const Model = require('objection').Model
-const tableName = require('../../util/constants/tableNames')
+const Model = require('objection').Model;
+const tableName = require('../../util/constants/tableNames');
 
 class CompulsoryModule extends Model {
     static get tableName() {
-        return tableName.COMPULSORY_MODULE
+        return tableName.COMPULSORY_MODULE;
     }
 
     static get idColumn() {
-        return 'compulsory_module_id'
+        return 'compulsory_module_id';
     }
 
     static get moduleIdColumn() {
-        return 'module_id'
+        return 'module_id';
     }
 
     static get majorIdColumn() {
-        return 'major_id'
+        return 'major_id';
     }
 
     static get jsonSchema() {
@@ -28,12 +28,12 @@ class CompulsoryModule extends Model {
                 module_id: { type: 'integer', minLength: 1 },
                 major_id: { type: 'integer', minLength: 1 },
             },
-        }
+        };
     }
 
     static get relationMappings() {
-        const Major = require('./majorModel')
-        const Module = require('./moduleModel')
+        const Major = require('./majorModel');
+        const Module = require('./moduleModel');
         return {
             major: {
                 relation: Model.BelongsToOneRelation,
@@ -52,8 +52,8 @@ class CompulsoryModule extends Model {
                     to: 'module.module_id',
                 },
             },
-        }
+        };
     }
 }
 
-module.exports = CompulsoryModule
+module.exports = CompulsoryModule;

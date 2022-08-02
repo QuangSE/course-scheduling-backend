@@ -1,21 +1,21 @@
-const Model = require('objection').Model
-const tableName = require('../../util/constants/tableNames')
+const Model = require('objection').Model;
+const tableName = require('../../util/constants/tableNames');
 
 class ModuleErGroup extends Model {
     static get tableName() {
-        return tableName.MODULE_ER_GROUP
+        return tableName.MODULE_ER_GROUP;
     }
 
     static get idColumn() {
-        return 'module_er_group_id'
+        return 'module_er_group_id';
     }
 
     static get erGroupIdColumn() {
-        return 'er_group_id'
+        return 'er_group_id';
     }
 
     static get moduleIdColumn() {
-        return 'module_id'
+        return 'module_id';
     }
 
     static get jsonSchema() {
@@ -28,12 +28,12 @@ class ModuleErGroup extends Model {
                 er_group_id: { type: 'integer', minLength: 1 },
                 module_id: { type: 'integer', minLength: 1 },
             },
-        }
+        };
     }
 
     static get relationMappings() {
-        const erGroup = require('./erGroupModel')
-        const Module = require('./moduleModel')
+        const erGroup = require('./erGroupModel');
+        const Module = require('./moduleModel');
         return {
             erGroup: {
                 relation: Model.BelongsToOneRelation,
@@ -52,8 +52,8 @@ class ModuleErGroup extends Model {
                     to: 'module.module_id',
                 },
             },
-        }
+        };
     }
 }
 
-module.exports = ModuleErGroup
+module.exports = ModuleErGroup;

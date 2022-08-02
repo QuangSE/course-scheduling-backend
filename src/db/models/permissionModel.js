@@ -1,21 +1,21 @@
-const Model = require('objection').Model
-const tableName = require('../../util/constants/tableNames')
+const Model = require('objection').Model;
+const tableName = require('../../util/constants/tableNames');
 
 class Permission extends Model {
     static get tableName() {
-        return tableName.PERMISSION
+        return tableName.PERMISSION;
     }
 
     static get idColumn() {
-        return 'permission_id'
+        return 'permission_id';
     }
 
     static get nameColumn() {
-        return 'name'
+        return 'name';
     }
 
     static get descriptionColumn() {
-        return 'description'
+        return 'description';
     }
 
     static get jsonSchema() {
@@ -28,12 +28,12 @@ class Permission extends Model {
                 name: { type: 'string', minLength: 1, maxLength: 200 },
                 description: { type: ['string', 'null'], minLength: 0, maxLength: 255 },
             },
-        }
+        };
     }
 
     //TODO: check syntax for model properties
     static get relationshipMappings() {
-        const User = require('./userModel')
+        const User = require('./userModel');
 
         return {
             users: {
@@ -44,8 +44,8 @@ class Permission extends Model {
                     to: 'user.permission_id',
                 },
             },
-        }
+        };
     }
 }
 
-module.exports = Permission
+module.exports = Permission;

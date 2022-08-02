@@ -4,4 +4,4 @@ module.exports = {
     PUT: 'PUT',
     PATCH: 'PATCH',
     DELETE: 'DELETE',
-}
+};

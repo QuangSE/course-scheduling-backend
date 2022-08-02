@@ -1,31 +1,31 @@
-const Password = require('objection-password')()
-const Model = require('objection').Model
+const Password = require('objection-password')();
+const Model = require('objection').Model;
 
-const tableName = require('../../util/constants/tableNames')
+const tableName = require('../../util/constants/tableNames');
 
 class User extends Password(Model) {
     static get tableName() {
-        return tableName.USER
+        return tableName.USER;
     }
 
     static get idColumn() {
-        return 'user_id'
+        return 'user_id';
     }
 
     static get usernameColumn() {
-        return 'username'
+        return 'username';
     }
 
     static get passwordColumn() {
-        return 'password'
+        return 'password';
     }
 
     static get permissionIdColumn() {
-        return 'permission_id'
+        return 'permission_id';
     }
 
     static get docentIdColumn() {
-        return 'docent_id'
+        return 'docent_id';
     }
 
     static get jsonSchema() {
@@ -40,12 +40,12 @@ class User extends Password(Model) {
                 permission_id: { type: 'integer', minLength: 1 },
                 docent_id: { type: 'integer', minLength: 1 },
             },
-        }
+        };
     }
 
     static get relationMappings() {
-        const Docent = require('./docentModel')
-        const Permission = require('./permissionModel')
+        const Docent = require('./docentModel');
+        const Permission = require('./permissionModel');
 
         return {
             docent: {
@@ -64,8 +64,8 @@ class User extends Password(Model) {
                     to: 'permission.permission_id',
                 },
             },
-        }
+        };
     }
 }
 
-module.exports = User
+module.exports = User;

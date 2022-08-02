@@ -1,29 +1,29 @@
-const Model = require('objection').Model
-const tableName = require('../../util/constants/tableNames')
+const Model = require('objection').Model;
+const tableName = require('../../util/constants/tableNames');
 
 class Module extends Model {
     static get tableName() {
-        return tableName.MODULE
+        return tableName.MODULE;
     }
 
     static get idColumn() {
-        return 'module_id'
+        return 'module_id';
     }
 
     static get nameColumn() {
-        return 'name'
+        return 'name';
     }
 
     static get semesterColumn() {
-        return 'semester'
+        return 'semester';
     }
 
     static get swsColumn() {
-        return 'sws'
+        return 'sws';
     }
 
     static get visibilityColumn() {
-        return 'visibility'
+        return 'visibility';
     }
 
     static get jsonSchema() {
@@ -38,15 +38,15 @@ class Module extends Model {
                 sws: { type: ['integer', 'null'], minLength: 1, maxLength: 100 },
                 visibility: { type: ['integer', 'null'], minLength: 1, maxLength: 1 },
             },
-        }
+        };
     }
 
     static get relationMappings() {
-        const Course = require('./courseModel')
-        const CompusolryModule = require('./compulsoryModuleModel')
-        const ModuleErGroup = require('./moduleErGroupModel')
-        const ErGroup = require('./erGroupModel')
-        const Major = require('./majorModel')
+        const Course = require('./courseModel');
+        const CompusolryModule = require('./compulsoryModuleModel');
+        const ModuleErGroup = require('./moduleErGroupModel');
+        const ErGroup = require('./erGroupModel');
+        const Major = require('./majorModel');
 
         return {
             courses: {
@@ -103,10 +103,10 @@ class Module extends Model {
                     to: 'major.major_id',
                 },
             },
-        }
+        };
 
         //TODO: Check nestled "through" mappings for retrieving the major of the modules
     }
 }
 
-module.exports = Module
+module.exports = Module;

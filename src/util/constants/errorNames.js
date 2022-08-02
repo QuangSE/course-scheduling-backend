@@ -7,4 +7,4 @@ module.exports = {
     INVALID_USERNAME_ERROR: 'InvalidUsernameError',
     INVALID_PASSWORD_ERROR: 'InvalidPasswordError',
     INVALID_TOKEN_ERROR: 'InvalidTokenError',
-}
+};

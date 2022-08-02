@@ -1,29 +1,29 @@
-const Model = require('objection').Model
-const tableName = require('../../util/constants/tableNames')
+const Model = require('objection').Model;
+const tableName = require('../../util/constants/tableNames');
 
 class Docent extends Model {
     static get tableName() {
-        return tableName.DOCENT
+        return tableName.DOCENT;
     }
 
     static get idColumn() {
-        return 'docent_id'
+        return 'docent_id';
     }
 
     static get firstNameColumn() {
-        return 'first_name'
+        return 'first_name';
     }
 
     static get lastNameColumn() {
-        return 'last_name'
+        return 'last_name';
     }
 
     static get titleColumn() {
-        return 'title'
+        return 'title';
     }
 
     static get jobTypeColumn() {
-        return 'job_type'
+        return 'job_type';
     }
 
     static get jsonSchema() {
@@ -39,13 +39,13 @@ class Docent extends Model {
                 title: { type: ['string', 'null'], maxLength: 100 },
                 job_type: { type: ['string', 'null'], minLength: 1, maxLength: 100 },
             },
-        }
+        };
     }
 
     static get relationMappings() {
-        const Course = require('./courseModel')
-        const DocentCourse = require('./docentCourseModel')
-        const User = require('./userModel')
+        const Course = require('./courseModel');
+        const DocentCourse = require('./docentCourseModel');
+        const User = require('./userModel');
 
         return {
             courses: {
@@ -69,8 +69,8 @@ class Docent extends Model {
                     to: 'user.docent_id',
                 },
             },
-        }
+        };
     }
 }
 
-module.exports = Docent
+module.exports = Docent;

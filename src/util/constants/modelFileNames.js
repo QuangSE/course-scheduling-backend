@@ -12,4 +12,4 @@ module.exports = {
     permission: 'permissionModel',
     user: 'userModel',
     compulsory_module: 'compulsoryModuleModel',
-}
+};

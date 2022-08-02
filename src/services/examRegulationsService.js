@@ -1,28 +1,28 @@
-const ExamRegulations = require('../db/models/ExamRegulationsModel')
-const logger = require('../util/logger')
+const ExamRegulations = require('../db/models/ExamRegulationsModel');
+const logger = require('../util/logger');
 
 exports.getAllExamRegulations = function () {
-    return ExamRegulations.query()
-}
+    return ExamRegulations.query();
+};
 
 exports.getExamRegulationsById = function (examRegulationsId) {
-    return ExamRegulations.query().findById(examRegulationsId)
-}
+    return ExamRegulations.query().findById(examRegulationsId);
+};
 
 exports.createNewExamRegulations = function (examRegulationsData) {
-    return ExamRegulations.query().insert(examRegulationsData)
-}
+    return ExamRegulations.query().insert(examRegulationsData);
+};
 
 exports.updateExamRegulations = async function (examRegulationsId, examRegulationsData) {
     const result = await ExamRegulations.query()
         .findById(examRegulationsId)
-        .patch(examRegulationsData) //TODO: why async?
-    return result
-}
+        .patch(examRegulationsData); //TODO: why async?
+    return result;
+};
 
 exports.deleteExamRegulationsById = function (examRegulationsId) {
-    return ExamRegulations.query().deleteById(examRegulationsId)
-}
+    return ExamRegulations.query().deleteById(examRegulationsId);
+};
 
 exports.getNumberOfSemesters = async function (examRegulationsId) {
     const examReg = await ExamRegulations.query()
@@ -31,13 +31,13 @@ exports.getNumberOfSemesters = async function (examRegulationsId) {
             builder
                 .withGraphFetched('modules')
                 .modifyGraph('modules', (builder) => {
-                    builder.orderBy('semester', 'desc')
+                    builder.orderBy('semester', 'desc');
                 })
-                .where('exam_regulations_id', examRegulationsId)
+                .where('exam_regulations_id', examRegulationsId);
         })
-        .findById(examRegulationsId)
+        .findById(examRegulationsId);
 
-    let semester = 0
+    let semester = 0;
     /*
   {
   "error": "RangeError",
@@ -45,31 +45,31 @@ exports.getNumberOfSemesters = async function (examRegulationsId) {
 }
   */
     examReg.erGroups.forEach((erGroup) => {
-        logger.info(JSON.stringify(erGroup))
-        const currSemester = erGroup.modules[0].semester
-        semester = currSemester > semester ? currSemester : semester
-    })
+        logger.info(JSON.stringify(erGroup));
+        const currSemester = erGroup.modules[0].semester;
+        semester = currSemester > semester ? currSemester : semester;
+    });
 
-    return semester
-}
+    return semester;
+};
 
 exports.getMajor = async function (examRegulationsId) {
-    const examReg = ExamRegulations.query().withGraphFetched('major').findById(examRegulationsId)
-    return examReg
-}
+    const examReg = ExamRegulations.query().withGraphFetched('major').findById(examRegulationsId);
+    return examReg;
+};
 
 exports.getCourses = async function (examRegulationsId) {
     const courses = await ExamRegulations.query()
         .withGraphFetched('erGroups')
         .modifyGraph('erGroups', (builder) => {
             builder.withGraphFetched('modules').modifyGraph('modules', (builder) => {
-                builder.withGraphFetched('courses')
-            })
+                builder.withGraphFetched('courses');
+            });
         })
-        .findById(examRegulationsId)
+        .findById(examRegulationsId);
 
-    return courses
-}
+    return courses;
+};
 
 exports.getAllCourses = async function () {
     const courses = await ExamRegulations.query()
@@ -81,11 +81,11 @@ exports.getAllCourses = async function () {
                     builder
                         .withGraphFetched('docentCourses')
                         .modifyGraph('docentCourses', (builder) => {
-                            builder.withGraphFetched('docent')
-                        })
-                })
-            })
-        })
+                            builder.withGraphFetched('docent');
+                        });
+                });
+            });
+        });
 
-    return courses
-}
+    return courses;
+};

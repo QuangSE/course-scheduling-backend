@@ -1,29 +1,29 @@
-const Model = require('objection').Model
-const tableName = require('../../util/constants/tableNames')
+const Model = require('objection').Model;
+const tableName = require('../../util/constants/tableNames');
 
 class Course extends Model {
     static get tableName() {
-        return tableName.COURSE
+        return tableName.COURSE;
     }
 
     static get idColumn() {
-        return 'course_id'
+        return 'course_id';
     }
 
     static get nameColumn() {
-        return 'name'
+        return 'name';
     }
 
     static get swsColumn() {
-        return 'sws'
+        return 'sws';
     }
 
     static get lswsColumn() {
-        return 'lsws'
+        return 'lsws';
     }
 
     static get moduleIdColumn() {
-        return 'module_id'
+        return 'module_id';
     }
 
     static get jsonSchema() {
@@ -37,14 +37,14 @@ class Course extends Model {
                 lsws: { type: 'number', minLength: 1, maxLength: 64 }, //FIXME: float validation is fucking up the system
                 module_id: { type: 'integer', minLength: 1 },
             },
-        }
+        };
     }
 
     //TODO: add relationshipMappings
     static get relationMappings() {
-        const Docent = require('./docentModel')
-        const DocentCourse = require('./docentCourseModel')
-        const Module = require('./moduleModel')
+        const Docent = require('./docentModel');
+        const DocentCourse = require('./docentCourseModel');
+        const Module = require('./moduleModel');
         return {
             docents: {
                 relation: Model.ManyToManyRelation,
@@ -77,8 +77,8 @@ class Course extends Model {
                     to: 'module.module_id',
                 },
             },
-        }
+        };
     }
 }
 
-module.exports = Course
+module.exports = Course;

@@ -1,21 +1,21 @@
-const Model = require('objection').Model
-const tableName = require('../../util/constants/tableNames')
+const Model = require('objection').Model;
+const tableName = require('../../util/constants/tableNames');
 
 class ErGroup extends Model {
     static get tableName() {
-        return tableName.ER_GROUP
+        return tableName.ER_GROUP;
     }
 
     static get idColumn() {
-        return 'er_group_id'
+        return 'er_group_id';
     }
 
     static get nameColumn() {
-        return 'name'
+        return 'name';
     }
 
     static get examRegulationsIdColumn() {
-        return 'exam_regulations_id'
+        return 'exam_regulations_id';
     }
 
     static get jsonSchema() {
@@ -27,13 +27,13 @@ class ErGroup extends Model {
                 name: { type: ['string', 'null'], maxLength: 200 },
                 exam_regulations_id: { type: 'integer', minLength: 1 },
             },
-        }
+        };
     }
 
     static get relationMappings() {
-        const Module = require('./moduleModel')
-        const ModuleErGroup = require('./moduleErGroupModel')
-        const ExamRegulations = require('./examRegulationsModel')
+        const Module = require('./moduleModel');
+        const ModuleErGroup = require('./moduleErGroupModel');
+        const ExamRegulations = require('./examRegulationsModel');
 
         return {
             modules: {
@@ -67,8 +67,8 @@ class ErGroup extends Model {
                     to: 'exam_regulations.exam_regulations_id',
                 },
             },
-        }
+        };
     }
 }
 
-module.exports = ErGroup
+module.exports = ErGroup;

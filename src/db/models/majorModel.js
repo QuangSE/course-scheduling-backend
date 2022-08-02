@@ -1,21 +1,21 @@
-const Model = require('objection').Model
-const tableName = require('../../util/constants/tableNames')
+const Model = require('objection').Model;
+const tableName = require('../../util/constants/tableNames');
 
 class Major extends Model {
     static get tableName() {
-        return tableName.MAJOR
+        return tableName.MAJOR;
     }
 
     static get idColumn() {
-        return 'major_id'
+        return 'major_id';
     }
 
     static get nameColumn() {
-        return 'name'
+        return 'name';
     }
 
     static get degreeColumn() {
-        return 'degree'
+        return 'degree';
     }
 
     static get jsonSchema() {
@@ -27,14 +27,14 @@ class Major extends Model {
                 name: { type: 'string', maxLength: 200 },
                 degree: { type: 'string', maxLength: 50 },
             },
-        }
+        };
     }
 
     static get relationMappings() {
-        const MajorGroup = require('./erGroupModel')
-        const CompulsoryModule = require('./compulsoryModuleModel')
-        const Module = require('./ModuleModel')
-        const ExamRegulations = require('./examRegulationsModel')
+        const MajorGroup = require('./erGroupModel');
+        const CompulsoryModule = require('./compulsoryModuleModel');
+        const Module = require('./ModuleModel');
+        const ExamRegulations = require('./examRegulationsModel');
         return {
             //TODO: Check nestled "through" mappings for retrieving all modules of a major
 
@@ -60,8 +60,8 @@ class Major extends Model {
                     to: 'exam_regulations.major_id',
                 },
             },
-        }
+        };
     }
 }
 
-module.exports = Major
+module.exports = Major;
