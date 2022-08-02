@@ -3,12 +3,12 @@
 GET http://localhost:3001/api/module/
 
 ###getmodule
-GET http://localhost:3001/api/module/449/
+GET http://localhost:3001/api/module/478/
 
 
 
 ###getcourses 
-GET http://localhost:3001/api/module/449/courses
+GET http://localhost:3001/api/module/478/courses
 
 
 

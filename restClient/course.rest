@@ -3,7 +3,7 @@
 GET http://localhost:3001/api/course/
 
 ###getcoursebyID
-GET http://localhost:3001/api/course/1
+GET http://localhost:3001/api/course/518sdas
 
 ###getDocent
 GET http://localhost:3001/api/course/1/docent
@@ -14,8 +14,8 @@ Content-Type: application/json
 
 {
 "name": "testcourse",
-"lsws": 2.3213,
-"module_id": 1
+"lsws": 76,
+"module_id": 447
 }
 
 ###updatecourse
@@ -27,5 +27,5 @@ Content-Type: application/json
 }
 
 ###deletecourseByID
-DELETE http://localhost:3001/api/course/113/
+DELETE http://localhost:3001/api/course/113s/
 

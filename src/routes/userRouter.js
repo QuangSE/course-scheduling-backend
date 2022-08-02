@@ -7,15 +7,27 @@ const router = express.Router();
 
 router.get('/', auth([permissionId.ADMIN]), userController.getAllUsers);
 router.get('/:id', auth([permissionId.ADMIN]), userController.getUserById);
-router.get('/username/:username', auth([permissionId.ADMIN]), userController.getUserByUsername);
-router.get('/:id/docent', auth([permissionId.ADMIN]), userController.getDocentOfUser);
+router.get(
+  '/username/:username',
+  auth([permissionId.ADMIN]),
+  userController.getUserByUsername
+);
+router.get(
+  '/:id/docent',
+  auth([permissionId.ADMIN]),
+  userController.getDocentOfUser
+);
 router.post('/', auth([permissionId.ADMIN]), userController.createNewUser);
 router.patch('/:id/', auth([permissionId.ADMIN]), userController.updateUser); //TODO: remove edit and delete in route? (seems unnecessary)
 router.patch(
-    '/my-account/credentials',
-    auth([permissionId.ADMIN]),
-    userController.updateMyCredentials
+  '/my-account/credentials',
+  auth([permissionId.ADMIN]),
+  userController.updateMyCredentials
 );
-router.delete('/:id/', auth([permissionId.ADMIN]), userController.deleteUserById);
+router.delete(
+  '/:id/',
+  auth([permissionId.ADMIN]),
+  userController.deleteUserById
+);
 
 module.exports = router;

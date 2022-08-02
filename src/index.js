@@ -8,6 +8,8 @@ const server = http.createServer(app);
 const port = process.env.PORT;
 
 server.listen(port, (err) => {
-    if (err) logger.error(err);
-    logger.info('Yey, your server is running at ' + process.env.Host + ':' + port);
+  if (err) logger.error(err);
+  logger.info(
+    'Yey, your server is running at ' + process.env.Host + ':' + port
+  );
 });
