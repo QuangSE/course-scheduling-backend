@@ -34,9 +34,9 @@ class Module extends Model {
             properties: {
                 module_id: { type: 'integer' },
                 name: { type: 'string', minLength: 1, maxLength: 200 },
-                semester: { type: 'integer', minLength: 1, maxLength: 15 },
-                sws: { type: ['integer', 'null'], minLength: 1, maxLength: 100 },
-                visibility: { type: ['integer', 'null'], minLength: 1, maxLength: 1 },
+                semester: { type: 'integer', minimum: 1, maximum: 127 },
+                sws: { type: ['integer', 'null'], minimum: 1, maximum: 127 },
+                visibility: { type: ['integer', 'null'], minimum: 0, maximum: 2 },
             },
         };
     }

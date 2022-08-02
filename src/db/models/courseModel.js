@@ -34,13 +34,13 @@ class Course extends Model {
             properties: {
                 course_id: { type: 'integer' },
                 name: { type: 'string', minLength: 1, maxLength: 200 },
-                lsws: { type: 'number', minLength: 1, maxLength: 64 }, //FIXME: float validation is fucking up the system
+                lsws: { type: 'number', minimum: 0, maximum: 64 }, //FIXME: float validation is fucking up the system
                 module_id: { type: 'integer', minLength: 1 },
             },
         };
     }
 
-    //TODO: add relationshipMappings
+
     static get relationMappings() {
         const Docent = require('./docentModel');
         const DocentCourse = require('./docentCourseModel');
