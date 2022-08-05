@@ -27,9 +27,10 @@ Content-Type: application/json
 DELETE http://localhost:3001/api/module/1/
 
 ###getModuleByNAme
-POST http://localhost:3001/api/module/by-name
+POST http://localhost:3001/api/module/by-name-semester
 Content-Type: application/json
 
 {
-"name":"testtesttesttest"
+"name":"Englisch Grundlagen",
+"semester":1
 }

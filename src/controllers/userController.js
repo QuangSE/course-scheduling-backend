@@ -1,4 +1,5 @@
 const userService = require('../services/userService');
+const docentService = require('../services/docentService');
 const logger = require('../util/logger');
 const errorHandler = require('../middlewares/errorHandler');
 const { checkIdParam } = require('../util/utilFunctions');
@@ -107,3 +108,60 @@ exports.deleteUserById = async function (req, res) {
     errorHandler(err, res);
   }
 };
+
+exports.getTotalLsws = async function (req, res) {
+  try {
+    const docentId = req.session.user.docent_id;
+    const result = await docentService.getCoursesByDocentId(docentId);
+    let totalLsws = 0;
+    if (result.docentCourses.length > 0) {
+      for (const docentCourse of result.docentCourses) {
+        if (docentCourse.registered === 1) {
+          totalLsws += docentCourse.course.lsws;
+        }
+      }
+    }
+    res.send({ totalLsws });
+  } catch (err) {
+    errorHandler(err, res);
+  }
+};
+
+exports.getVisibleCourses = async function (req, res) {
+  try {
+    const docentId = req.session.user.docent_id;
+    const result = await docentService.getCoursesWithModulesByDocentId(
+      docentId
+    );
+    let visibleCourses = [];
+    if (result.docentCourses.length > 0) {
+      for (const docentCourse of result.docentCourses) {
+        if (isVisible(docentCourse.course.module)) {
+          visibleCourses.push(docentCourse);
+        }
+      }
+    }
+    res.send({ visibleCourses });
+  } catch (err) {
+    errorHandler(err, res);
+  }
+};
+
+function isVisible(module) {
+  const moduleVisibility = module.visibility;
+  //TODO: ask when to display the module
+  const currentMonth = new Date().getMonth();
+  if (currentMonth >= 5 && currentMonth <= 11) {
+    if (moduleVisibility == 1) {
+      return true;
+    } else {
+      return false;
+    }
+  } else {
+    if (moduleVisibility == 1) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+}

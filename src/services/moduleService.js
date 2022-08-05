@@ -10,7 +10,6 @@ exports.getModuleById = function (moduleId) {
 
 exports.getModuleByNameSemester = function (name, semester) {
   return Module.query()
-    .first()
     .where(Module.nameColumn, name)
     .where(Module.semesterColumn, semester);
 };
@@ -33,4 +32,11 @@ exports.getCoursesWithModuleId = async function (moduleId) {
     .withGraphFetched('courses')
     .findById(moduleId);
   return module ? module.courses : null;
+};
+
+exports.getCompulsoryModuleOverview = async function () {
+  const overview = await Module.query().withGraphFetched(
+    '[compulsoryModuleMajors, courses.docentCourses.docent]'
+  );
+  return overview;
 };

@@ -1,6 +1,8 @@
 const compulsoryModuleService = require('../services/compulsoryModuleService');
+const moduleService = require('../services/moduleService');
 const errorHandler = require('../middlewares/errorHandler');
 const { checkIdParam } = require('../util/utilFunctions');
+const logger = require('../util/logger');
 const InvalidParamError = require('../util/customErrors').InvalidParameterError;
 const COMPULSORY_MODULE =
   require('../util/constants/tableNames').COMPULSORY_MODULE;
@@ -57,6 +59,35 @@ exports.deleteCompulsoryModuleById = async function (req, res) {
     if (!(await compulsoryModuleService.deleteCompulsoryModuleById(id)))
       throw new InvalidParamError(COMPULSORY_MODULE, id);
     res.sendStatus(200);
+  } catch (err) {
+    errorHandler(err, res);
+  }
+};
+
+exports.getOverview = async function (req, res) {
+  try {
+    const result = await moduleService.getCompulsoryModuleOverview();
+    let overview = [];
+    for (module of result) {
+      if (module.compulsoryModuleMajors.length > 0) {
+        overview.push(module);
+      }
+    }
+    res.send(overview);
+  } catch (err) {
+    errorHandler(err, res);
+  }
+};
+
+exports.getCompulsoryModuleByIds = async function (req, res) {
+  try {
+    const moduleId = req.body.moduleId;
+    const majorId = req.body.majorId;
+    const result = await compulsoryModuleService.getCompulsoryModuleByIds(
+      moduleId,
+      majorId
+    );
+    return res.send(result);
   } catch (err) {
     errorHandler(err, res);
   }

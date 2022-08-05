@@ -25,3 +25,14 @@ exports.updateCompulsoryModule = async function (
 exports.deleteCompulsoryModuleById = function (compulsoryModuleId) {
   return CompulsoryModule.query().deleteById(compulsoryModuleId);
 };
+
+exports.getMajor = function () {
+  return CompulsoryModule.query().withGraphFetched('major');
+};
+
+exports.getCompulsoryModuleByIds = function (moduleId, majorId) {
+  return CompulsoryModule.query()
+    .first()
+    .where(CompulsoryModule.moduleIdColumn, moduleId)
+    .where(CompulsoryModule.majorIdColumn, majorId);
+};

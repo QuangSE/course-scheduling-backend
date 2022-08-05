@@ -61,6 +61,16 @@ class Docent extends Model {
           to: 'course.course_id',
         },
       },
+
+      docentCourses: {
+        relation: Model.HasManyRelation,
+        modelClass: DocentCourse,
+        join: {
+          from: 'docent.docent_id',
+          to: 'docent_course.docent_id',
+        },
+      },
+
       user: {
         relation: Model.HasOneRelation, //TODO: can a docent has more than one account?
         modelClass: User,

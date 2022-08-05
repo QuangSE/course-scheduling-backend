@@ -20,3 +20,14 @@ exports.updateMajor = async function (majorId, majorData) {
 exports.deleteMajorById = function (majorId) {
   return Major.query().deleteById(majorId);
 };
+
+exports.getExamRegulations = function (majorId) {
+  return Major.query().withGraphFetched('examRegulations').findById(majorId);
+};
+
+exports.getMajorByNameDegree = function (name, degree) {
+  return Major.query()
+    .first()
+    .where(Major.nameColumn, name)
+    .where(Major.degreeColumn, degree);
+};

@@ -8,13 +8,13 @@ POST http://localhost:3001/api//exam-regulations/
 Content-Type: application/json
 
 {
-"year":2021,
-"exam_regulations_group":"PO2022&PO2016",
-"major_id":25
+"year":2020,
+"exam_regulations_group":"",
+"major_id":1
 }
 
 ###delet PO 
-DELETE http://localhost:3001/api/exam-regulations/12/
+DELETE http://localhost:3001/api/exam-regulations/27/
 
 
 ###get senester
@@ -24,6 +24,14 @@ GET http://localhost:3001/api/exam-regulations/6/number-of-semesters
 
 ###get courses
 GET http://localhost:3001/api/exam-regulations/6/courses
+
+###get er-groups
+GET http://localhost:3001/api/exam-regulations/6/er-groups
+
+###get existing module
+GET http://localhost:3001/api/exam-regulations/17/module/1087
+
+
 
 ###get courses
 GET http://localhost:3001/api/exam-regulations/all/overview/courses

@@ -35,7 +35,7 @@ class Module extends Model {
         module_id: { type: 'integer' },
         name: { type: 'string', minLength: 1, maxLength: 200 },
         semester: { type: 'integer', minimum: 1, maximum: 127 },
-        sws: { type: ['integer', 'null'], minimum: 1, maximum: 127 },
+        sws: { type: ['integer', 'null'], minimum: 0, maximum: 127 },
         visibility: { type: ['integer', 'null'], minimum: 0, maximum: 2 },
       },
     };
@@ -43,7 +43,7 @@ class Module extends Model {
 
   static get relationMappings() {
     const Course = require('./courseModel');
-    const CompusolryModule = require('./compulsoryModuleModel');
+    const CompulsoryModule = require('./compulsoryModuleModel');
     const ModuleErGroup = require('./moduleErGroupModel');
     const ErGroup = require('./erGroupModel');
     const Major = require('./majorModel');
@@ -69,7 +69,7 @@ class Module extends Model {
 
       compulsoryModules: {
         relation: Model.HasManyRelation,
-        modelClass: CompusolryModule,
+        modelClass: CompulsoryModule,
         join: {
           from: 'module.module_id',
           to: 'compulsory_module.module_id',
@@ -96,7 +96,7 @@ class Module extends Model {
         join: {
           from: 'module.module_id',
           through: {
-            ModelClass: CompusolryModule,
+            ModelClass: CompulsoryModule,
             from: 'compulsory_module.module_id',
             to: 'compulsory_module.major_id',
           },

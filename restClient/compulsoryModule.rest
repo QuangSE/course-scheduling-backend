@@ -1,0 +1,13 @@
+###getexamreg
+GET http://localhost:3001/api/compulsory-module/all/overview
+
+
+###getexamreg
+Post http://localhost:3001/api/compulsory-module/by-ids
+Content-Type: application/json
+
+{
+"moduleId": 447,
+"majorId": 5
+}
+

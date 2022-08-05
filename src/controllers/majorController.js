@@ -65,3 +65,28 @@ exports.deleteMajorById = async function (req, res) {
     errorHandler(err, res);
   }
 };
+
+exports.getExamRegulations = async function (req, res) {
+  try {
+    const id = req.params.id;
+    checkIdParam(id);
+    const result = await majorService.getExamRegulations(id);
+    if (result) {
+      return res.send(result);
+    }
+    throw new InvalidParamError(MAJOR, id);
+  } catch (err) {
+    errorHandler(err, res);
+  }
+};
+
+exports.getMajorByNameDegree = async function (req, res) {
+  try {
+    const name = req.body.name;
+    const degree = req.body.degree;
+    const result = await majorService.getMajorByNameDegree(name, degree);
+    res.send(result);
+  } catch (err) {
+    errorHandler(err, res);
+  }
+};

@@ -104,12 +104,16 @@ exports.getAllCourses = async function () {
   return courses;
 };
 
-//object notation
-/* exports.getAllCourses = async function () {
-  const courses = await ExamRegulations.query().withGraphFetched({
-    major: true,
-    erGroups: { modules: { courses: { docentCourses: { docent: true } } } },
-  });
+exports.getErGroups = async function (examRegulationsId) {
+  const courses = await ExamRegulations.query()
+    .withGraphFetched('erGroups')
+    .findById(examRegulationsId);
   return courses;
 };
- */
+
+exports.getModelErGroups = async function (examRegulationsId) {
+  const courses = await ExamRegulations.query()
+    .withGraphFetched('erGroups.moduleErGroups')
+    .findById(examRegulationsId);
+  return courses;
+};

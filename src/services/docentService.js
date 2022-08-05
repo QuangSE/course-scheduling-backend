@@ -33,3 +33,15 @@ exports.getMinimalDocentList = function () {
     Docent.firstNameColumn
   );
 };
+
+exports.getCoursesByDocentId = function (docentId) {
+  return Docent.query()
+    .withGraphFetched('[docentCourses.course]')
+    .findById(docentId);
+};
+
+exports.getCoursesWithModulesByDocentId = function (docentId) {
+  return Docent.query()
+    .withGraphFetched('[docentCourses.course.module]')
+    .findById(docentId);
+};

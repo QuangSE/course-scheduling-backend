@@ -20,8 +20,11 @@ const router = express.Router();
 router.use('/auth', authenticationRouter);
 /* router.use("/", authenticateToken); */
 
-//TODO: endpoint url hyphen-ated instead of camelCase
-router.use('/docent', auth([permissionId.ADMIN]), docentRouter);
+router.use(
+  '/docent',
+  auth([permissionId.ADMIN, permissionId.USER]),
+  docentRouter
+);
 router.use('/user', userRouter);
 router.use('/permission', auth([permissionId.ADMIN]), permissionRouter);
 router.use(
@@ -35,7 +38,7 @@ router.use('/major', auth([permissionId.ADMIN]), majorRouter);
 router.use('/exam-regulations', examRegulationsRouter);
 router.use(
   '/compulsory-module',
-  auth([permissionId.ADMIN]),
+  auth([permissionId.ADMIN, permissionId.USER]),
   compulsoryModuleRouter
 );
 router.use('/er-group', auth([permissionId.ADMIN]), erGroupRouter);

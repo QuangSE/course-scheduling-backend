@@ -26,6 +26,16 @@ router.get(
   examRegulationsController.getCourses
 );
 router.get(
+  '/:id/er-groups',
+  auth([permissionId.ADMIN, permissionId.USER]),
+  examRegulationsController.getErGroups
+);
+router.get(
+  '/:id/module/:moduleId',
+  auth([permissionId.ADMIN, permissionId.USER]),
+  examRegulationsController.getExistingModule
+);
+router.get(
   '/all/overview/courses',
   auth([permissionId.ADMIN, permissionId.USER]),
   examRegulationsController.getAllCourses

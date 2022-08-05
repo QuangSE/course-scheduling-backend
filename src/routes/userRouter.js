@@ -17,11 +17,23 @@ router.get(
   auth([permissionId.ADMIN]),
   userController.getDocentOfUser
 );
+
+router.get(
+  '/my-account/total-lsws',
+  auth([permissionId.ADMIN, permissionId.USER]),
+  userController.getTotalLsws
+);
+router.get(
+  '/my-account/visible-courses',
+  auth([permissionId.ADMIN, permissionId.USER]),
+  userController.getVisibleCourses
+);
+
 router.post('/', auth([permissionId.ADMIN]), userController.createNewUser);
-router.patch('/:id/', auth([permissionId.ADMIN]), userController.updateUser); //TODO: remove edit and delete in route? (seems unnecessary)
+router.patch('/:id/', auth([permissionId.ADMIN]), userController.updateUser);
 router.patch(
   '/my-account/credentials',
-  auth([permissionId.ADMIN]),
+  auth([permissionId.ADMIN, permissionId.USER]),
   userController.updateMyCredentials
 );
 router.delete(

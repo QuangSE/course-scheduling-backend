@@ -33,7 +33,7 @@ exports.getDocentCourseById = async function (req, res) {
 exports.createNewDocentCourse = async function (req, res, next) {
   try {
     let docentCourseData = req.body;
-    req.body.updated_by = req.session.user.docent_id;
+    /* req.body.updated_by = req.session.user.docent_id; */
     const result = await docentCourseService.createNewDocentCourse(
       docentCourseData
     );

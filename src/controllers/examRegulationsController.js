@@ -4,6 +4,7 @@ const errorHandler = require('../middlewares/errorHandler');
 const { checkIdParam } = require('../util/utilFunctions');
 const InvalidParamError = require('../util/customErrors').InvalidParameterError;
 const msg = require('../util/logMessages');
+const { request } = require('express');
 const EXAM_REGULATIONS =
   require('../util/constants/tableNames').EXAM_REGULATIONS;
 
@@ -117,9 +118,49 @@ exports.getCourses = async function (req, res) {
 exports.getAllCourses = async function (req, res) {
   try {
     const result = await examRegulationsService.getAllCourses();
+    logger.info('Courses for all exam regulation fetched');
+    return res.send(result);
+  } catch (err) {
+    errorHandler(err, res);
+  }
+};
+
+exports.getErGroups = async function (req, res) {
+  try {
+    const id = req.params.id;
+    const result = await examRegulationsService.getErGroups(id);
     if (result) {
       logger.info('Courses for all exam regulation fetched');
       return res.send(result);
+    }
+    throw new InvalidParamError(EXAM_REGULATIONS, id);
+  } catch (err) {
+    errorHandler(err, res);
+  }
+};
+
+exports.getExistingModule = async function (req, res) {
+  try {
+    const id = req.params.id;
+    const moduleId = parseInt(req.params.moduleId);
+    const result = await examRegulationsService.getModelErGroups(id);
+    let response = null;
+    /* return res.send(result); */
+    if (result) {
+      logger.debug('ergroup length: ' + result.erGroups.length);
+      if (result.erGroups.length === 0) {
+        return res.send(response);
+      }
+      for (const erGroup of result.erGroups) {
+        for (const moduleErGroup of erGroup.moduleErGroups) {
+          const moduleErGroupModuleId = moduleErGroup.module_id;
+          if (moduleErGroupModuleId === moduleId) {
+            response = { module_id: moduleId };
+            break;
+          }
+        }
+      }
+      return res.send(response);
     }
     throw new InvalidParamError(EXAM_REGULATIONS, id);
   } catch (err) {

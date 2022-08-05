@@ -10,9 +10,10 @@ POST http://localhost:3001/api/docent-course/
 Content-Type: application/json
 
 {
-"docent_id": 1,
-"course_id": 446,
-"registered": 1
+"docent_id": 180,
+"course_id": 577,
+"registered": 0,
+"updated_by": 180
 }
 
 ###get docent course by course_id docent_id
@@ -33,11 +34,11 @@ Content-Type: application/json
 }
 
 ###updatedocentCourse
-PATCH http://localhost:3001/api/docent-course/217/
+PATCH http://localhost:3001/api/docent-course/289/
 Content-Type: application/json
 
 {
-"registered": 0
+"updated_by": 2
 }
 
 

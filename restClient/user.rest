@@ -6,6 +6,14 @@ GET http://localhost:3001/api/user/
 ###getuserbyID
 GET http://localhost:3001/api/user/1
 
+###get total sws
+GET http://localhost:3001/api/user/my-account/total-lsws
+
+
+###get visible courses
+GET http://localhost:3001/api/user/my-account/visible-courses
+
+
 ###getuserbyUsername
 GET http://localhost:3001/api/user/username/testUser
 
@@ -28,8 +36,6 @@ Content-Type: application/json
 
 ###updateuser
 PATCH  http://localhost:3001/api/user/1/
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6InRlc3RVc2VyIiwicGVybWlzc2lvbiI6MSwiaWF0IjoxNjU4NTAxMjkzfQ.6pXU3JYlItktRRsX-_pljncjF5QFbWlCByUe79jhd9E
 
 
 {
@@ -39,8 +45,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c
 
 ###FIXME: weird error 
 PATCH  http://localhost:3001/api/user/1/
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6InRlc3RVc2VyIiwicGVybWlzc2lvbiI6MSwiaWF0IjoxNjU4NTAxMjkzfQ.6pXU3JYlItktRRsX-_pljncjF5QFbWlCByUe79jhd9E
 
 
 {

@@ -1,12 +1,18 @@
 {
-    "version": "0.2.0",
-    "configurations": [ 
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch localhost",
+      "type": "firefox",
+      "request": "launch",
+      "reAttach": true,
+      "url": "http://localhost:3001",
+      "pathMappings": [
         {
-            "name": "Chrome",
-            "type": "chrome",
-            "request": "launch",
-            "url": "http://localhost:3001",     // create-react-app's default port 3000
-            "webRoot": "${workspaceRoot}/src"
+          "url": "http://localhost",
+          "path": "${workspaceFolder}/src"
         }
-    ]
+      ]
+    }
+  ]
 }

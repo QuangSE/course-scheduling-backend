@@ -5,8 +5,8 @@ GET http://localhost:3001/api/major/
 ###getmajorbyID
 GET http://localhost:3001/api/major/1
 
-###getDocent
-GET http://localhost:3001/api/major/1/docent
+###getexamreg
+GET http://localhost:3001/api/major/1/exam-regulations/
 
 
 
@@ -15,8 +15,17 @@ POST http://localhost:3001/api/major/
 Content-Type: application/json
 
 {
-"name":"Wirtschaftsingenieurwesen - Logistik & Produktionsmanagement",
-"degree":"Master"
+"name":"International Business Administration",
+"degree":"Bachelor"
+}
+
+###getMajorbynamedegree
+POST http://localhost:3001/api/major/by-name-degree
+Content-Type: application/json
+
+{
+"name":"Mittelstandsökonomie",
+"degree":"Bachelor"
 }
 
 
@@ -31,7 +40,7 @@ Content-Type: application/json
 
 
 ###deletemajorByID
-DELETE http://localhost:3001/api/major/23/
+DELETE http://localhost:3001/api/major/13/
 
 
 
@@ -40,7 +49,7 @@ POST http://localhost:3001/api//examRegulations/
 Content-Type: application/json
 
 {
-"year":2013,
+"year":20,
 "exam_regulations_group":"",
-"major_id":1
+"major_id":12
 }
