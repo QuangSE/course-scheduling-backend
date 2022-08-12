@@ -12,19 +12,13 @@ const compulsoryModuleRouter = require('./routes/compulsoryModuleRouter');
 const erGroupRouter = require('./routes/erGroupRouter');
 const moduleErGroupRouter = require('./routes/moduleErGroupRouter');
 const authenticationRouter = require('./routes/authenticationRouter');
-const { authenticateToken, auth } = require('./middlewares/authMiddleware');
+const { auth } = require('./middlewares/authMiddleware');
 const permissionId = require('./util/constants/permissionId');
 
 const router = express.Router();
 
 router.use('/auth', authenticationRouter);
-/* router.use("/", authenticateToken); */
-
-router.use(
-  '/docent',
-  auth([permissionId.ADMIN, permissionId.USER]),
-  docentRouter
-);
+router.use('/docent', docentRouter);
 router.use('/user', userRouter);
 router.use('/permission', auth([permissionId.ADMIN]), permissionRouter);
 router.use(

@@ -5,6 +5,10 @@ const router = express.Router();
 
 router.post('/create-session', authenticationController.createSession);
 router.get('/session', authenticationController.getSession);
+router.post(
+  '/existing-docent',
+  authenticationController.getExistingDocentByName
+);
 router.post('/delete-session', authenticationController.deleteSession);
 
 module.exports = router;

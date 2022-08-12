@@ -1,5 +1,6 @@
 const Docent = require('../db/models/docentModel');
 const db = require('../db/dbSetup');
+const { firstNameColumn } = require('../db/models/docentModel');
 
 exports.getAllDocents = function () {
   return Docent.query();
@@ -44,4 +45,15 @@ exports.getCoursesWithModulesByDocentId = function (docentId) {
   return Docent.query()
     .withGraphFetched('[docentCourses.course.module]')
     .findById(docentId);
+};
+
+exports.getDocentByName = function (lastName, firstName) {
+  return Docent.query()
+    .first()
+    .where(Docent.lastNameColumn, lastName)
+    .where(Docent.firstNameColumn, firstName);
+};
+
+exports.getDocentCourseOverview = function () {
+  return Docent.query().withGraphFetched('[docentCourses.course]');
 };

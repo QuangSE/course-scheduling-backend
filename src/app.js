@@ -2,7 +2,7 @@ const express = require('express');
 const { trim_all, trim_util } = require('request_trimmer');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-const session = require('cookie-session');
+const cookieSession = require('cookie-session');
 
 const loggerMiddleware = require('./middlewares/loggerMiddleware');
 const validateJson = require('./middlewares/validateJson');
@@ -23,14 +23,13 @@ app.use(express.json()); //TODO: handling syntax errors
 app.use(validateJson);
 app.use(trim_all);
 app.use(
-  session({
-    secret: process.env.ACCESS_TOKEN_SECRET,
-    maxAge: 24 * 60 * 60 * 1000,
+  cookieSession({
+    secret: process.env.COOKIE_SECRET,
+    maxAge: 12 * 60 * 60 * 1000,
   })
 );
 
 app.get('/', (req, res) => {
-  req.session.isAuth = true;
   res.send({
     message: 'Backend API',
     session: JSON.stringify(req.session),
@@ -39,7 +38,5 @@ app.get('/', (req, res) => {
 
 //routes middleware
 app.use('/api', router);
-
-//app.use(errorHandler);
 
 module.exports = app;

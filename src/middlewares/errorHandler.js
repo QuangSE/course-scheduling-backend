@@ -23,7 +23,7 @@ function errorHandler(err, res) {
       });
       break;
     case errNames.UNIQUE_VIOLATION_ERROR:
-      res.status(409).send({
+      res.status(422).send({
         name: err.name,
         message: err.nativeError.sqlMessage,
       });

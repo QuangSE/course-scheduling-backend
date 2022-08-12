@@ -29,7 +29,7 @@ router.get(
   userController.getVisibleCourses
 );
 
-router.post('/', auth([permissionId.ADMIN]), userController.createNewUser);
+router.post('/', userController.createNewUser);
 router.patch('/:id/', auth([permissionId.ADMIN]), userController.updateUser);
 router.patch(
   '/my-account/credentials',

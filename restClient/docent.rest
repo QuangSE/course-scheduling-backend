@@ -5,6 +5,10 @@ GET http://localhost:3001/api/docent/
 ###getminimaldocentlist
 GET http://localhost:3001/api/docent/list/minimal
 
+###Overview
+GET http://localhost:3001/api/docent/docent-course/overview
+
+
 ###getDocentbyID
 GET http://localhost:3001/api/docent/1
 
@@ -16,7 +20,7 @@ Content-Type: application/json
 "first_name": "asdtest2",
 "last_name": "test",
 "title": "Prof. Dr",
-"job_type":"Professor"
+"job_ty
 }
 
 ###updateDocent

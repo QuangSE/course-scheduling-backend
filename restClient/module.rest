@@ -3,7 +3,7 @@
 GET http://localhost:3001/api/module/
 
 ###getmodule
-GET http://localhost:3001/api/module/478/
+GET http://localhost:3001/api/module/sd/
 
 
 
@@ -19,7 +19,7 @@ Content-Type: application/json
 {
 "name":"test",
 "semester":1.6234,
-"sws":3,
+"sws":3000000000,
 "visibility":1
 }
 

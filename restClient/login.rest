@@ -13,3 +13,12 @@ Content-Type: application/json
 {
 "logout": "true"
 }
+
+###
+GET http://localhost:3001/api/auth/existing-docent
+Content-Type: application/json
+
+{
+"lastName": "mustermann",
+"firstName": "max"
+}

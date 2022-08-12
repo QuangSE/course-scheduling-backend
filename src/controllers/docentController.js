@@ -90,3 +90,34 @@ exports.getMinimalDocentList = async function (req, res) {
     errorHandler(err, res);
   }
 };
+
+exports.getDocentCourseOverview = async function (req, res) {
+  try {
+    const result = await docentService.getDocentCourseOverview();
+    let docentOverview = [];
+    for (const docent of result) {
+      let totalLsws = 0;
+      let registeredCourses = 0;
+      if (docent.docentCourses.length > 0) {
+        for (const docentCourse of docent.docentCourses) {
+          if (docentCourse.registered === 1) {
+            totalLsws += docentCourse.course.lsws;
+            ++registeredCourses;
+          }
+        }
+      }
+      docentOverview.push({
+        docentId: docent.docent_id,
+        title: docent.title,
+        firstName: docent.first_name,
+        lastName: docent.last_name,
+        jobType: docent.job_type,
+        totalLsws: totalLsws,
+        registeredCourses: registeredCourses,
+      });
+    }
+    res.send(docentOverview);
+  } catch (err) {
+    errorHandler(err, res);
+  }
+};

@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 
 const authenticationService = require('../services/authenticationService');
 const userService = require('../services/userService');
+const docentService = require('../services/docentService');
 const logger = require('../util/logger');
 const errorHandler = require('../middlewares/errorHandler');
 const {
@@ -9,6 +10,7 @@ const {
   InvalidUsernameError,
   WrongPasswordError,
 } = require('../util/customErrors');
+const { info } = require('../util/logger');
 
 exports.createSession = async function (req, res) {
   try {
@@ -76,24 +78,23 @@ exports.deleteSession = async function (req, res) {
   }
 };
 
-/* const generateAccessToken = async function (username) {
+exports.getExistingDocentByName = async function (req, res) {
   try {
-    const userData = await userService.getUserByUsername(username);
-    const payload = {
-      user_id: userData.user_id,
-      username: userData.username,
-      permission: userData.permission_id,
-    };
-    const accessToken = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET); //TODO: add expiration
-    logger.debug(`Access Token generated for user: '${username}'`);
-    return accessToken;
+    const lastName = req.body.lastName;
+    const firstName = req.body.firstName;
+    logger.debug(JSON.stringify(req.body));
+    let docent = null;
+    if (!firstName) {
+      docent = await docentService.getDocentByLastName(lastName);
+    } else {
+      docent = await docentService.getDocentByName(lastName, firstName);
+    }
+    if (docent) {
+      res.send({ docentId: docent.docent_id });
+    } else {
+      res.send(docent);
+    }
   } catch (err) {
-    logger.debug(err);
+    errorHandler(err, res);
   }
 };
-
-const cookieOptions = {
-  httpOnly: true,
-  //secure: true; //https
-};
- */

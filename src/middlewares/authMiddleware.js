@@ -3,7 +3,7 @@ const logger = require('../util/logger');
 const errorHandler = require('../middlewares/errorHandler');
 const InvalidTokenError = require('../util/customErrors').InvalidTokenError;
 
-function authenticateToken(req, res, next) {
+/* function authenticateToken(req, res, next) {
   try {
     const cookies = req.cookies;
     const token = authHeader && cookies.token;
@@ -24,16 +24,18 @@ function authenticateToken(req, res, next) {
     return errorHandler(err, res);
   }
 }
-
+ */
 function auth(permissions) {
   return (req, res, next) => {
     const session = req.session;
     logger.debug('session: ' + JSON.stringify(req.session));
-    if (!Object.keys(session).length) {
+    if (!session.user) {
       logger.warn(
         'Attempt to access unauthorized API endpoint from unknown user'
       );
-      return res.status(401).send('Unauthorized!');
+      return res
+        .status(401)
+        .send({ name: 'Unauthorized', message: 'Not authenticated' });
     }
 
     const reqPermission = req.session.user.permission_id;
@@ -46,10 +48,10 @@ function auth(permissions) {
         'Attempt to access unauthorized API endpoint from user: ' +
           req.session.user.username
       );
-      res.status(401);
-      return res.send('Unauthorized');
+      res.status(403);
+      return res.send({ name: 'Forbidden', message: 'Access denied' });
     }
   };
 }
 
-module.exports = { authenticateToken, auth };
+module.exports = { auth };
