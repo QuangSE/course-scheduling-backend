@@ -33,7 +33,7 @@ class Docent extends Model {
 
       properties: {
         docent_id: { type: 'integer' },
-        first_name: { type: ['string', 'null'], minLength: 1, maxLength: 200 },
+        first_name: { type: ['string', 'null'], maxLength: 200 },
         last_name: { type: 'string', maxLength: 200 },
         email: { type: ['string', 'null'] || '', maxLength: 200 },
         title: { type: ['string', 'null'], maxLength: 100 },
