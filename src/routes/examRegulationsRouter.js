@@ -41,6 +41,11 @@ router.get(
   examRegulationsController.getAllCourses
 );
 router.post(
+  '/by-major-id-year',
+  auth([permissionId.ADMIN, permissionId.USER]),
+  examRegulationsController.getErByMajorIdYear
+);
+router.post(
   '/',
   auth([permissionId.ADMIN]),
   examRegulationsController.createNewExamRegulations

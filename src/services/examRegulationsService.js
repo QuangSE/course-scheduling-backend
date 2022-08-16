@@ -117,3 +117,10 @@ exports.getModelErGroups = async function (examRegulationsId) {
     .findById(examRegulationsId);
   return courses;
 };
+
+exports.getErByMajorIdYear = async function (majorId, year) {
+  return ExamRegulations.query()
+    .first()
+    .where(ExamRegulations.majorIdColumn, majorId)
+    .where(ExamRegulations.yearColumn, year);
+};

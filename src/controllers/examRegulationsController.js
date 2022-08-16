@@ -167,3 +167,17 @@ exports.getExistingModule = async function (req, res) {
     errorHandler(err, res);
   }
 };
+
+exports.getErByMajorIdYear = async function (req, res) {
+  try {
+    const majorId = req.body.majorId;
+    const year = req.body.year;
+    const result = await examRegulationsService.getErByMajorIdYear(
+      majorId,
+      year
+    );
+    return res.send(result);
+  } catch (err) {
+    errorHandler(err, res);
+  }
+};
