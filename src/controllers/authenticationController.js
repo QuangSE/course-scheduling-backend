@@ -1,7 +1,4 @@
-const jwt = require('jsonwebtoken');
-
 const authenticationService = require('../services/authenticationService');
-const userService = require('../services/userService');
 const docentService = require('../services/docentService');
 const logger = require('../util/logger');
 const errorHandler = require('../middlewares/errorHandler');
@@ -10,7 +7,6 @@ const {
   InvalidUsernameError,
   WrongPasswordError,
 } = require('../util/customErrors');
-const { info } = require('../util/logger');
 
 exports.createSession = async function (req, res) {
   try {

@@ -1,7 +1,6 @@
 const express = require('express');
 const { trim_all, trim_util } = require('request_trimmer');
 const cors = require('cors');
-const cookieParser = require('cookie-parser');
 const cookieSession = require('cookie-session');
 
 const loggerMiddleware = require('./middlewares/loggerMiddleware');
@@ -14,18 +13,19 @@ const app = express();
 
 app.use(
   cors({
-    origin: 'http://localhost:3000',
+    origin: 'https://localhost:3000',
     credentials: true, //Configures the Access-Control-Allow-Credentials CORS header. Set to true to pass the header, otherwise it is omitted.
   })
 );
 app.use(loggerMiddleware);
-app.use(express.json()); //TODO: handling syntax errors
+app.use(express.json());
 app.use(validateJson);
 app.use(trim_all);
 app.use(
   cookieSession({
     secret: process.env.COOKIE_SECRET,
     maxAge: 12 * 60 * 60 * 1000,
+    secure: true,
   })
 );
 

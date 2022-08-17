@@ -1,30 +1,5 @@
-const jwt = require('jsonwebtoken');
 const logger = require('../util/logger');
-const errorHandler = require('../middlewares/errorHandler');
-const InvalidTokenError = require('../util/customErrors').InvalidTokenError;
 
-/* function authenticateToken(req, res, next) {
-  try {
-    const cookies = req.cookies;
-    const token = authHeader && cookies.token;
-    if (!token) {
-      throw new InvalidTokenError(
-        401,
-        'A token is required for authentication'
-      );
-    }
-    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
-      if (err) throw new InvalidTokenError();
-      logger.debug('user: ' + JSON.stringify(user));
-      req.user = user;
-      next();
-    });
-  } catch (err) {
-    res.clearCookie('token');
-    return errorHandler(err, res);
-  }
-}
- */
 function auth(permissions) {
   return (req, res, next) => {
     const session = req.session;
