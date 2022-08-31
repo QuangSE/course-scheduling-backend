@@ -42,5 +42,6 @@ POST http://localhost:3001/api/docent/by-last-name
 Content-Type: application/json
 
 {
-"last_name": "Heitmann"
+"last_name": "LfbA NN WInfo
+"
 }

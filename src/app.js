@@ -1,5 +1,5 @@
 const express = require('express');
-const { trim_all, trim_util } = require('request_trimmer');
+const { trim_all } = require('request_trimmer');
 const cors = require('cors');
 const cookieSession = require('cookie-session');
 
@@ -26,6 +26,8 @@ app.use(
     secret: process.env.COOKIE_SECRET,
     maxAge: 12 * 60 * 60 * 1000,
     secure: true,
+    httpOnly: true,
+    sameSite: 'strict',
   })
 );
 
@@ -37,6 +39,6 @@ app.get('/', (req, res) => {
 });
 
 //routes middleware
-app.use('/api', router);
+app.use('/api-v1.0', router);
 
 module.exports = app;

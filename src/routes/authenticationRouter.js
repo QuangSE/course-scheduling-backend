@@ -5,6 +5,7 @@ const router = express.Router();
 
 router.post('/create-session', authenticationController.createSession);
 router.get('/session', authenticationController.getSession);
+router.get('/registration-code', authenticationController.getRegCode);
 router.post(
   '/existing-docent',
   authenticationController.getExistingDocentByName

@@ -4,13 +4,22 @@ GET http://localhost:3001/api/exam-regulations/
 
 
 ###create PO
-POST http://localhost:3001/api//exam-regulations/
+POST http://localhost:3001/api/exam-regulations/
 Content-Type: application/json
 
 {
 "year":2020,
 "exam_regulations_group":"",
 "major_id":1
+}
+
+###get PO By major id year
+POST http://localhost:3001/api/exam-regulations/by-major-id-year
+Content-Type: application/json
+
+{
+"year":2020,
+"majorId":16
 }
 
 ###delet PO 
@@ -34,4 +43,4 @@ GET http://localhost:3001/api/exam-regulations/17/module/1087
 
 
 ###get courses
-GET http://localhost:3001/api/exam-regulations/all/overview/courses
+GET https://localhost:3001/api/exam-regulations/all/overview/courses

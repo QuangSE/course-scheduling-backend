@@ -24,6 +24,9 @@ exports.createSession = async function (req, res) {
     if (!result) {
       throw new WrongPasswordError(username);
     }
+
+    const docent = await docentService.getDocentById(result.docent_id);
+    const docentLastName = docent.last_name;
     logger.info('Session created for user ' + result.username);
 
     const userInfos = {
@@ -31,6 +34,7 @@ exports.createSession = async function (req, res) {
       username: result.username,
       permission_id: result.permission_id,
       docent_id: result.docent_id,
+      docentLastName,
     };
 
     req.session.user = userInfos;
@@ -90,6 +94,14 @@ exports.getExistingDocentByName = async function (req, res) {
     } else {
       res.send(docent);
     }
+  } catch (err) {
+    errorHandler(err, res);
+  }
+};
+
+exports.getRegCode = async function (req, res) {
+  try {
+    res.send({ registrationCode: process.env.REGISTRATION_CODE });
   } catch (err) {
     errorHandler(err, res);
   }
